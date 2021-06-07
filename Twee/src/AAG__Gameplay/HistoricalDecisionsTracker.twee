@@ -1,0 +1,24 @@
+::Historical Decisions Tracker [script]
+window.DecisionsTracker = class extends SugarcubeSerializableObject {
+    constructor(){
+        super()
+        this.prologueDecisions = window.DecisionTracker.createPrologueDecisionsTracker()
+        this.part1Decisions = new Object()
+    }
+    static createPrologueDecisionsTracker(){
+        let tracker = new Object()
+        tracker.dutifulAtSchool = 0
+        tracker.flirtyAtSchool = 0
+        tracker.strictAtSchool = 0
+        tracker.dutifulAtHome = 0
+        tracker.flirtyAtHome = 0
+        tracker.dominantTowardsLifePartner = 0
+        tracker.generousTowardsLifePartner = 0
+        tracker.strictTowardsDaughter = 0
+        tracker.dominantTowardsDaughter = 0
+        tracker.generousTowardsDaughter = 0
+        tracker.additionalTraitModifiers = new Map()
+    }
+}
+
+window.decisionsTracker = new DecisionsTracker()

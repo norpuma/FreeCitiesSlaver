@@ -1,0 +1,3 @@
+import PowerPlayFramework.CharacterSystems.CharactersBasePy as charbase
+import PowerPlayFramework.CharacterSystems.CharacterFundamentsPy as fundaments
+

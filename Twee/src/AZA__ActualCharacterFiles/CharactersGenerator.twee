@@ -1,0 +1,34 @@
+::Character Generation [script]
+
+function createTyron(){
+    let character = new BaseCharacter("Tyron", Gender.MALE)
+    character.personality = new CharacterPersonality(undefined, undefined, PersonalityPresets.SELF_CENTERED)
+    return character
+}
+function createDannie(){
+    let character = new BaseCharacter("Dannie", Gender.FEMALE)
+    character.personality = new CharacterPersonality(undefined, undefined, PersonalityPresets.NICE)
+    return character
+}
+function createAndrea(){
+    let character = new BaseCharacter("Andrea", Gender.FEMALE)
+    character.personality = new CharacterPersonality(undefined, undefined, PersonalityPresets.BITCHY)
+    return character
+}
+function createCarla(){
+    let character = new BaseCharacter("Carla", Gender.FEMALE)
+    character.personality = new CharacterPersonality(undefined, undefined, PersonalityPresets.DECEITFUL_MANIPULATOR)
+    return character
+}
+
+window.generateCharacters = function(){
+    State.variables.protagonist = undefined
+    State.variables.miles = undefined
+    State.variables.tyron = undefined
+    State.variables.dannie = createDannie()
+    State.variables.andrea = undefined
+    State.variables.carla = undefined
+}
+
+::Generate Characters
+<<run generateCharacters()>>\

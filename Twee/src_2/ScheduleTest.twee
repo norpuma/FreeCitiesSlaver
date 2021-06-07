@@ -1,0 +1,43 @@
+::Schedule [script]
+class WeekDays {
+    static SUNDAY = "SUNDAY"
+    static SUNDAY_INDEX = 0
+    static MONDAY = "MONDAY"
+    static MONDAY_INDEX = 1
+    static TUESDAY = "TUESDAY"
+    static TUESDAY_INDEX = 2
+    static WEDNSDAY = "WEDNSDAY"
+    static WEDNSDAY_INDEX = 3
+    static THURSDAY = "THURSDAY"
+    static THURSDAY_INDEX = 4
+    static FRIDAY = "FRIDAY"
+    static FRIDAY_INDEX = 5
+    static STURDAY = "SATURDAY"
+    static STURDAY_INDEX = 6
+    static daysOfTheWeek = [WeekDays.SUNDAY, WeekDays.MONDAY, WeekDays.TUESDAY, WeekDays.WEDNESDAY, WeekDays.THURSDAY, WeekDays.FRIDAY, WeekDays.SATURDAY]
+}
+
+function buildDaySchedule(){
+    return
+}
+
+Macro.add('showSchedule', {
+	tags     : null,
+	handler  : function () {
+        let output = ""
+        let firstDayOfTheWeek = true
+        for(let weekday of WeekDays.daysOfTheWeek) {
+            buildDaySchedule()
+            if (firstDayOfTheWeek == true){
+                firstDayOfTheWeek = false
+            }
+            if ((act.action.registrationRequirementsFunction === undefined) || (act.action.registrationRequirementsFunction(actor, target, circumstances) == true)){
+                output += "[[" + act.actionPrompt + "|Invader Visitating Prey Loop - States][$invaderVisit.currentInvaderActId = \"" + act.action.actionId + "\", $invaderVisit.state = InvaderVisit.ACTION_NOT_DESCRIBED_STATE]]\n"
+            }
+        }
+		$(this.output).wiki(output);
+	}
+});
+
+::Schedule Passage
+<<showSchedule>><</showSchedule>>

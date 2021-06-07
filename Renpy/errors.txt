@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "ErogeFrameworkTester/_Climax_Tester.rpy", line 17: expected statement.
+    girl.stimulated = 888
+                    ^
+
+Ren'Py Version: Ren'Py 7.4.4.1439
+Thu Jun  3 18:23:14 2021

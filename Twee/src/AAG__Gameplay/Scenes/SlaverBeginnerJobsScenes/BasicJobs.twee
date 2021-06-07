@@ -1,0 +1,24 @@
+::Slaver Beginner Jobs - Online Jobs Listing [script]
+class SlaverJob extends SugarcubeSerializableObject {
+    constructor(){
+        super(description, durationCount, durationUnit, payModifier)
+        this.description = description
+        this.durationCount = durationCount
+        this.durationUnit = durationUnit
+        this.payModifier = payModifier
+        this.jobPassage = undefined
+        this.slaverRequirements = undefined
+        this.slaveStartingConditions = undefined
+        this.slaveFinalConditions = undefined
+        this.payBonusFunction = undefined
+    }
+    calculateJobPay(){
+        // This usually takes into consideration slaver requirements, slave starting conditions and slave final conditions.
+        // The more slaver skills a job requires, the more it is worth.
+        // The more skills a slave MUST have for a job, the more it is worth.
+        // The more changed a slave MUST be at the end of a job, the more it is worth.
+        return 0 + this.payModifier
+    }
+}
+
+var job0001 = new SlaverJob("The client needs someone to take his slave in for a few days.", 3, "days", 60)

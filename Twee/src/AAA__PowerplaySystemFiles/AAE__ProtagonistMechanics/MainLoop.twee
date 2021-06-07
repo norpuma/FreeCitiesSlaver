@@ -1,0 +1,27 @@
+::Game - Main Loop
+<<set _nextActivity = $dayPlan.getNextActivity($currentHour)>>\
+<<set _currentHour = $timeController.getCurrentHour()>>\
+<<set _gameDay = $timeController.getGameDay(true)>>\
+It's _currentHour:00 of day _gameDay. <<include _nextActivity.planningTextPassage>>
+
+<<include "Schedule Presentation">>
+<hr>
+
+<<if _nextActivity.startHour == $currentHour>>\
+    <<link _nextActivity.linkText "Main Loop - Activity Retrospective">><<set $currentHour += _nextActivity.durationInHours>><<set $latestActivity = _nextActivity>><</link>>
+
+    OR Follow schedule until [[Go!|Jump Schedule]] <<numberbox "$stopFollowingScheduleHour" _nextActivity.startHour>>
+
+<<else>>\
+    <<set _freeHours = _nextActivity.startHour - $currentHour>>\
+    <<if _freeHours == 1>><<set _hourOrHours = "hour">><<else>><<set _hourOrHours = "hours">><</if>>\
+    You have nothing scheduled for right now. You have _freeHours _hourOrHours before your next activity.
+
+    At _nextActivity.startHour:00 you have something scheduled: "<<include _nextActivity.planningTextPassage>>"
+<</if>>\
+
+::Main Loop - Activity Retrospective
+<<include $latestActivity.retrospectivePassageName>>
+
+[[Continue.|Game - Main Loop]]
+

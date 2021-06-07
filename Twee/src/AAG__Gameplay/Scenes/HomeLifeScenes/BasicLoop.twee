@@ -1,0 +1,90 @@
+::Home Life - Schedule Information
+You live in one of the poorest parts of the Arcology. The walls are thin, the view is not great, the sound of the Arcology's machinery is constant.
+
+The most notable places at this level are Scum Tavern, the Market, the Gates, the Water Plant, the Energy Plant, Manufacturing-1, Manufacturing-2 and Manufacturing-3, the Bio-Factories and, finally, the Exterior. There are, also, numerous residences.
+
+The Acrology Owner just decreed that all Gengineered will now be slaves. This has lead to a resurgence of jobs for people on C-Level.
+
+You can get a pass to B-Level, but it costs money.
+
+Health Level 2 (Average); Requires 56 hours of sleep; $70 (+0 cooking hours + 0 cooking skill) food per week.
+Appearance Level 1 (Insignificantly); Requires: 1 hour per day; $50 products per week.
+House Level 1 (Insignificantly); Requires: $300 per week (+4 hours cleaning per week + 0 cleaning skill).
+Job Level 1 (Menial); Requires: 0 minimum hours per week and -1 happiness per 4 hours; Earns $11 per hour.
+Happiness Level 2 (Moderately); Requires: 5 hours per week (+$0 per week).
+Fitness Level 0 (Not); Requires: 0 hours per week (+$0 per week).
+Knowledge Level 3 (Significantly); Requires: 10 hours per week (+$0 per week).
+Social Level 2 (Moderately); Requires: 5 hours per week (+$0 per week).
+
+Your current schedule is:
+- Sleep: 8 hours every night of the week sleeping (56 hours per week) to keep your health.
+- Overhead: 4 hour per day (28 hours per week) on useless, but necessary activities (eating, moving from place to place, using the bathroom).
+
+- Appearance: 1 hour every morning (7 hours per week) on your appearance to keep your current appearance level.
+- Housekeeping: 4 hours every Sunday early afternoon (4 hours per week) on house chores to keep a house minimally clean.
+
+- Job: 8 hours every weekday morning and early afternoon (40 hours per week) on a surveillance job to earn $440 per week.
+- Happiness: 2 hours per evening and 2 hours in the weekend afternoons (18 hours per week) on having fun to keep your current satisfaction level.
+
+- Fitness: 0 hours per week (0 hours per week) on physical activities to maintain your current fitness level.
+- Knowledge: 2 hours per later afternoon every weekday (10 hours per week) on intellectual activities to maintain your current knowledge level.
+- Social: 2 hours on every Friday and 3 every Saturday evenings (5 hours per week) on social activities to maintain your current fitness level.
+- You have 0 hour of free time per week. (0 = 168 (= 7 * 24) - 167 (= 56 + 28 + 7 + 4 + 40 + 18 + 0 + 10 + 5))
+Your current money balance is:
+- You spend $300 per week on rent to keep your current living standards.
+- You spend $70 per week on food to maintain your health, appearance and happiness levels.
+- You spend $50 per week on products to keep your appearance.
+- You earn $440 per week from your job(s).
+- Your total balance is $20 per week.
+- You currently have $5'000 on your account.
+
+
+- 0 hours for Trait level 0
+- 2 hours for Trait level 1
+- 5 hours for Trait level 2
+- 10 hours for Trait level 3
+- 20 hours for Trait level 4
+- 40 hours for Trait level 5
+- 80 hours for Trait level 6
+
+- Level 0 equipment for -20% effectiveness      - Poor / Bad / Low Quality
+- Level 1 equipment for +0% effectiveness       - Reasonable / Okay / Moderately Good / Moderate Quality
+- Level 2 equipment for +20% effectiveness      - Good / Nice / Quality
+- Level 3 equipment for +50% effectiveness      - Great / Uncommonly Good / Great Quality
+- Level 4 equipment for +100% effectiveness     - Excellent / Extraordinary / Superior Quality
+- Level 5 equipment for +200% effectiveness     - Amazing / Fantastic / Incredible Quality
+
+- Hunger for Trait (i.e. Hunger for Knowledge) means up to 5 hours per week of the activity add to Happiness, but also that every hour below 5 of the activity decreases Happiness.
+
+You can look at Fitness Activities.
+You can look at Knowledge Activities.
+You can look at Social Activities.
+You can look at Job Opportunities.
+You can look at Deals.
+
+
+You look at job opportunities online and find that you can review surveillance footage for $11 per hour. It is a very boring job, however, which decreases your happiness.
+There is also a job dismantling the Gengineered cooking facility and dismantling the Gengineered imprinting facility. There are no skills necessary and the pay is low ($36 per 4 hours). However, you may learn something interesting about the Gengineered in those jobs.
+You look at some other job opportunities and find that there is a market, now, for slavery related jobs. Most of them are on B-Level however.
+
+
+
+You get the chance to talk to Quentin Arbas on the C-Level Market.
+
+Quentin tells you that there isn't much of a market for Gengineered slaves on C-Level, since people are usually too poor to pay for them and since there are expenses with keeping a slave. He hears that there are some rumors of Gengineered hiding somewhere on this Level of the Arcology.
+
+
+
+You check your back account and decide it is worth studying the slaver manual.
+
+::Home Life - Basic Loop
+You go through your week following your schedule.
+
+[[Look at online jobs.|Slaver Online Jobs - List]]
+
+::Slaver Online Jobs - List
+You peruse the Arcology's Digital District looking for jobs for a starting slaver.
+
+You have no reputation and no credentials, currently. This limits your jobs to the most basic ones.
+
+<<showSlaverOnlineJobs>>

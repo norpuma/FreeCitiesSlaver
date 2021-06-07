@@ -1,0 +1,104 @@
+::Initializations [script]
+window.generateStandardSlaver = function(){
+    let slaver = new BaseCharacter("You", Gender.MALE, true)
+    slaver.body = new CharacterBody(slaver.gender, 23)
+    slaver.names.setName("first", "Jeremy", "Jeremy's")
+    slaver.names.setName("last", "Anders", "Anders'")
+
+    return slaver
+}
+
+window.generateRandomSlave = function(){
+    let attractionToFemales = undefined
+    let attractionToMales = undefined
+
+    let slave = new BaseCharacter("Mara", Gender.FEMALE, true)
+    slave.body = new CharacterBody(slave.gender, 22)
+    attractionToFemales = TraitIntensity.INSIGNIFICANTLY
+    attractionToMales = TraitIntensity.SIGNIFICANTLY
+    slave.sexuality = new CharacterSexuality(attractionToFemales, attractionToFemales)
+    slave.sexuality.generateDefaultArousalProfiles(slave.gender)
+    
+    return slave
+}
+
+State.variables.town = new Object()
+
+
+::Short Intro Text
+And so it is that you return to $town.formalName. You are not sure how to feel. You have some good and some pretty terrible memories here. But now you are back and you have a plan. You intend to become one of the foremost slavers in the arcology, now that slavery has been made an official policy.
+
+At the gate they take a sample of your blood to compare with the citizen database and they get you to answer some forms.
+
+After paying your entry fee back into the arcology you are nearly broke. You take up a job as a part time surveillance monitor, but this is only a step on your way to becoming a slaver.
+
+<!-- You live in the lower levels Arcology X-145 - one of the so-called "Free Cities". You have a soul-draining job and a bland life.
+
+Last night, though, you had an unexpected windfall. After an incredible bout of good luck, you won at cards against a mid-level visitor slumming it. The visitor was overconfident and lost more than his money, he bet and lost his sole slave. He promised to pay his debt tonight and you are anxiously waiting for him to come make his word good.
+
+<<include "Player Setup">>
+
+The doorbell rings and there he is with a cloaked form stand in the rain behind him. He offers his Device and read a standard slave contract on the screen. The interface is just waiting for you to approach your own Device to transfer ownership to you. You never thought you would have a slave! You quickly touch your device to his and press your code to acknowledge the contract transference.
+
+With a grunt, the loser steps away and leaves you with the slave.
+
+You gesture for the cloaked slave to step and take off the soaked garment.
+
+[[Receive some random slave|First Meeting a Slave][$slave = generateRandomSlave()]]
+-->
+
+::Player Setup
+<<set $slaver = generateStandardSlaver()>>\
+<<set $protagonist = $slaver>>\
+Before you can collect, however, you check your information on the Arcology database. It should be right, so that the ownership can be properly transferred to you.
+
+Your address looks right: Arcology X-145, level 7, unit 48, apartment C-27.
+
+Your name is: $protagonist.names.first $protagonist.names.last
+Your age is: $protagonist.body.age.
+Your occupation is: Surveillance Technician.
+Your last evaluation test netted you a score of 99. The distribution was:
+- Knowledge: 33
+- Fitness: 33
+- Social: 33
+
+::First Meeting a Slave
+In X-145 only the gengineered can be slaves. The thing standing in front of you looks like a Human, but that's no person, it is just a genetically engineered creature. From the downcast eyes, you know the slave is aware of their sub-human nature.
+
+[[Inspect slave.|Slave Inspection]]
+[[Read the slave's record sheet.|Slave Record]]
+[[Talk to the slave.|Slave Interaction]]
+
+[[Assign your slave a sleeping place.]]
+[[Assign your slave a task.]]
+[[Give your slave a command.]]
+
+::Slave Inspection
+Your slave looks like a Caucasian woman in her prime. She has a slim figure, with modest breasts and short brown hair. She has a nice face, too unblemished to be called beautiful. She has just a standard beauty found most places in the Arcology. She is wearing a very plain gray dress, white shoes and no makeup.
+
+[[Continue.|First Meeting a Slave]]
+
+::Slave Record
+Your slave was registered as TY-22-BAK-48F23, a female house slave. She was created with mostly Caucasian genes, force-grown to maturity - the biological equivalent of a 22 years old. Her mind was imprinted with the standard body-servant archetype - docile and unskilled. She has been active for 8 months. She has received no special training, she has an inactive sex drive and she is sterile. She was healthy at her last inspection and receive all the standard shots.
+
+[[Continue.|First Meeting a Slave]]
+
+::Slave Interaction
+[[Name the slave.|First Meeting a Slave - Renaming the slave]]
+[[Ask the slave's name.|First Meeting a Slave - Ask the slave's name]]
+
+::First Meeting a Slave - Ask the slave's name
+"They call me $slave.names.first, sir," she answers in a soft voice, her eyes avoiding yours.
+
+[[Name the slave.|First Meeting a Slave - Renaming the slave]]
+[[Let them keep their previous name.|First Meeting a Slave]]
+
+::First Meeting a Slave - Renaming the slave
+<<set $slave.names.setName("standard", "Dannie", "Dannie's")>>\
+<<set $slave.names.setName("first", "Dannie", "Dannie's")>>\
+<<set $slave.name = "Dannie">>\
+"Forget your previous name. From now on, you will answer to $slave.name," you tell her in a serious tone.
+
+"I- yes, sir. I will answer to $slave.name, now."
+
+[[Continue.|First Meeting a Slave]]

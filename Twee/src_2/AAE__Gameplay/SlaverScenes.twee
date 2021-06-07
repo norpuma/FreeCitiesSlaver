@@ -1,0 +1,46 @@
+<!--
+    Inspect slave.
+    Check slave file.
+    Take action.
+    Talk to slave.
+-->
+
+::Slave Reactions - Accede to Prompting - Lift Skirt and Show Panties
+She lifts her skirt and shows you her panties.
+
+::Slave Reactions - Accede to Prompting - Undress to Underwear
+She takes off the remainder of her clothes and presents herself to you in her underwear.
+
+::Slave Reactions - Accede to Prompting - Flash Breasts
+She pulls her clothes apart and give you a nice view of her delicious breasts.
+
+::Slave Reactions - Accede to Prompting - Flash Crotch - Female
+She pulls her clothes apart and lets you take in the sight of her blushing vulva.
+
+::Slaver - Scripts [script]
+Macro.add('showSlaverPossibleActions', {
+	tags     : null,
+	handler  : function () {
+        let output = ""
+        let actor = State.variables.invaderVisit.invader
+        let target = State.variables.invaderVisit.prey
+        let circumstances = undefined
+        for(let act of State.variables.alienArousalCompletePossibleActions.values()) {
+            if ((act.action.registrationRequirementsFunction === undefined) || (act.action.registrationRequirementsFunction(actor, target, circumstances) == true)){
+                output += "[[" + act.actionPrompt + "|Invader Visitating Prey Loop - States][$invaderVisit.currentInvaderActId = \"" + act.action.actionId + "\", $invaderVisit.state = InvaderVisit.ACTION_NOT_DESCRIBED_STATE]]\n"
+            }
+        }
+		$(this.output).wiki(output);
+	}
+});
+
+Macro.add('showSlaveAtInspection', {
+    tags: null,
+    handler: function (){
+        let output = ""
+        let slave = this.args[0]
+        /* EXAMPLE:
+            Your slave Emily Talent is a young adult woman with long black hair and mysterious dark eyes. She is wearing a gray dress and looks at you with apprehension and respect.
+        */
+    }
+})

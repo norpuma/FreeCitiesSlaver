@@ -1,0 +1,347 @@
+::Crisis - Introduction - Wife Reunites with Protagonist
+<!-- TODO: Write this up. -->
+Chose:
+- Be bold and romantic. (domination +1, respect 0, attraction +1, enmity 0)
+- Be loving and tactful/patient. (domination +1, respect -1, attraction 0, enmity -1)
+- Offer flattery and gifts. (domination +1, respect -1, attraction 0, enmity -1)
+- Be joyful and enthusiastic. (domination 0, respect 0, attraction +1, enmity 0)
+- Be demanding and impatient. (domination -1, respect +1, attraction +1, enmity +1)
+- Be judgemental. (domination -1, respect +1, attraction 0, enmity +1)
+- Be crude and gropy. (domination 0, respect -1, attraction -1, enmity +1)
+
+::Crisis - Introduction - Wife Wants a Cleaner House
+<!-- TODO: Write this up. -->
+Chose:
+- Pay for a house maid. (domination -1, respect +1, attraction 0, enmity 0)
+- Clean the house yourself. (domination -1, respect -1, attraction 0, enmity 0)
+- Ignore your wife. (domination +1, respect +1, attraction 0, enmity +1)
+- Tell your daughter to clean the house. (domination 0, respect +1, attraction +1, enmity -1)
+- Tell your wife to clean the house herself. (domination +1, respect 0, attraction 0, enmity +1)
+
+::Crisis - Introduction - Wife Has to Work Late
+<!-- TODO: Write this up. -->
+Chose:
+- Tell her not to do it. (domination +1, respect -1, attraction 0, enmity 0)
+- Let her do it and make her feel guilty. (domination +1, respect 0, attraction 0, enmity 0)
+- Let her do it and be upset. (domination -1, respect 0, attraction 0, enmity 0)
+- Let her do it and be understanding. (domination -1, respect -1, attraction 0, enmity 0)
+
+::Crisis - Introduction - Wife Spends Too Much During a Shopping Spree
+<!-- TODO: Write this up. -->
+Chose:
+- Show understanding and forgive her. (domination -1, respect -1, attraction 0, enmity 0)
+- See her in a single dress that she bought for a company function in the hopes of getting a raise and forgive her. (domination -1, respect 0, attraction 0, enmity 0)
+- Make her model everything she bought and forgive her. (domination 0, respect 0, attraction 0, enmity 0)
+- Make her model everything she bought and tell her to return everything. (domination +1, respect 0, attraction 0, enmity +1)
+- Berate her and let her keep what she bought. (domination 0, respect +1, attraction 0, enmity 0)
+- Berate her and make her return everything.(domination 0, respect +1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Wife Wants a Romantic Dinner
+<!-- TODO: Write this up. -->
+Chose:
+- Take her out to an expensive place. (domination -1, respect 0, attraction +1, enmity 0)
+- Take her out to a modest place you know she likes. (domination 0, respect 0, attraction +1, enmity 0)
+- Take her out to a place you like and she doesn't like much. (domination +1, respect 0, attraction +1, enmity 0)
+- Take her out to a place you like and that she hates. (domination +1, respect -1, attraction 0, enmity +1)
+- Stay home and cook. (domination -1, respect +1, attraction +1, enmity -1)
+- Stay home and ignore the whole affair. (domination 0, respect 0, attraction 0, enmity +1)
+- Stay home and force her to cook for you. (domination +1, respect 0, attraction 0, enmity +1)
+
+::Crisis - Introduction - Wife Wants a Day at the SPA
+<!-- TODO: Write this up. -->
+Chose:
+- Take her to the SPA. (domination -1, respect 0, attraction 0, enmity -1)
+- Stay home and offer her a massage. (domination -1, respect -1, attraction 0, enmity 0)
+- Stay home and ignore the whole affair. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Wife Wants More Respect from Daughter
+<!-- TODO: Write this up. -->
+Chose:
+- Berate her in front of daughter. (domination +1, respect -1, attraction 0, enmity +1)
+- Berate her in private. (domination 0, respect 0, attraction 0, enmity +1)
+- Tell her to forget it. (domination 0, respect -1, attraction 0, enmity 0)
+- Berate the daughter in private. (domination 0, respect 0, attraction 0, enmity -1)
+- Berate the daughter in front of her. (domination -1, respect 0, attraction 0, enmity -1)
+
+::Crisis - Introduction - Daughter Reunites with Protagonist
+<!-- TODO: Write this up. -->
+Chose:
+- Be paternal and judgemental. (domination -1, respect -1, attraction 0, enmity +1)
+- Be paternal and affectionate. (domination +1, respect -1, attraction 0, enmity -1)
+- Be affectionate and tactful/patient. (domination 0, respect +1, attraction +1, enmity -1)
+- Be impatient and judgemental. (domination -1, respect 0, attraction +1, enmity +1)
+- Be impatient and dismissive. (domination 0, respect -1, attraction 0, enmity +1)
+- Be crude and dismissive. (domination 0, respect -1, attraction -1, enmity +1)
+
+::Crisis - Introduction - Daughter Wants a New Phone
+<!-- TODO: Write this up. -->
+Chose:
+- Get her a new phone. (domination -1, respect -1, attraction 0, enmity -1)
+- Refuse her a new phone. (domination 0, respect -1, attraction 0, enmity 0)
+- Get her to do chores to get a new phone. (domination +1, respect +1, attraction 0, enmity +1)
+- Get her to get a new job to buy herself a new phone. (domination 0, respect 0, attraction 0, enmity 0)
+
+::Crisis - Introduction - Daughter Comes Home Late
+<!-- TODO: Write this up. -->
+Chose:
+- Be worried for her and forgive her. (domination -1, respect -1, attraction 0, enmity 0)
+- Be worried for her and punish her. (domination -1, respect 0, attraction 0, enmity 0)
+- Ignore her. (domination 0, respect -1, attraction 0, enmity 0)
+- Berate her. (domination 0, respect 0, attraction 0, enmity 0)
+- Punish her. (domination +1, respect +1, attraction 0, enmity -1)
+
+::Crisis - Introduction - Daughter Brings Friends Home that are a Bad Influence.
+<!-- TODO: Write this up. -->
+Chose:
+- Get her and her friends some food and drinks, treating her like a child. (domination -1, respect -1, attraction 0, enmity 0)
+- Let her have her time with her friends. (domination 0, respect +1, attraction 0, enmity 0)
+- Let her have her time with her friends and spy on them. (domination -1, respect -1, attraction 0, enmity 0)
+- Let her have her time with her friends and, afterwards, forbid her from seeing them as they are a bad influence. (domination 0, respect -1, attraction 0, enmity +1)
+- Pull her aside and tell her to send her friends away as they are a bad influence. (domination 0, respect -1, attraction 0, enmity 0)
+- Loudly send her friends away as they are a bad influence. (domination +1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Daughter Wants a Sexy Dress to Go Clubbing
+<!-- TODO: Write this up. -->
+Chose:
+- Get her a sexy new dress. (domination -1, respect -1, attraction 0, enmity -1)
+- Get her to do chores to get a new dress and buy her a less sexy dress. (domination +1, respect 0, attraction 0, enmity +1)
+- Refuse her a sexy new dress. (domination 0, respect -1, attraction 0, enmity 0)
+- Refuse her a sexy new dress and forbid her from going clubbing. (domination +1, respect +1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Daughter gets a Note from School for Bad Grades/Behavior.
+<!-- TODO: Write this up. -->
+Chose:
+- Ask her how she is feeling and get her a treat. (domination -1, respect -1, attraction 0, enmity -1)
+- Aks her how she is feeling and punish her. (domination +1, respect +1, attraction 0, enmity 0)
+- Ignore her. (domination 0, respect -1, attraction 0, enmity 0)
+- Berate her and forgive her. (domination 0, respect +1, attraction 0, enmity 0)
+- Berate her and punish her. (domination +1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Daughter Wants the Protagonist to Put the Wife in Her Place More Often
+<!-- TODO: Write this up. -->
+Chose:
+- Berate her in front of wife. (domination +1, respect -1, attraction 0, enmity +1)
+- Berate her in private. (domination 0, respect 0, attraction 0, enmity +1)
+- Tell her to forget it. (domination 0, respect -1, attraction 0, enmity 0)
+- Berate the wife in private. (domination 0, respect 0, attraction 0, enmity -1)
+- Berate the wife in front of her. (domination -1, respect 0, attraction 0, enmity -1)
+
+::Crisis - Introduction - Discuss Slavery at Home
+<!-- TODO: Write this up. -->
+Chose:
+- Position yourself in favor of slavery. (domination +1)
+- Take an undecided position. (respect -1)
+- Position yourself against of slavery. (domination -1)
+
+::Crisis - Introduction - Principal, the boss, is Introduced - Opportunity for Flirting
+<!-- TODO: Write this up. -->
+Chose:
+- Be smooth, flirt subtly, make her feel challenged. (domination 0, respect 0, attraction +1, enmity 0)
+- Offer flattery and flirt openly. (domination +1, respect 0, attraction +1, enmity 0)
+- Be polite and professional. (domination 0, respect -1, attraction 0, enmity 0)
+- Be friendly and informal. (domination 0, respect -1, attraction 0, enmity 0)
+- Be informal and crass. (domination 0, respect -1, attraction -1, enmity +1)
+
+::Crisis - Introduction - Principal Wants the Protagonist to Work Late on an Important Family Date
+<!-- TODO: Write this up. -->
+Chose:
+- Stay late to please her. (domination +1, respect 0, attraction 0, enmity 0)
+- Stay late for the good of the school. (domination +1, respect +1, attraction 0, enmity -1)
+- Refuse, but after a threat of losing job, stay. (domination +1, respect -1, attraction 0, enmity +1)
+- Stay late on the condition of bonus pay. (domination 0, respect 0, attraction 0, enmity 0)
+- Refuse politely. (domination 0, respect 0, attraction 0, enmity 0)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Principal Wants the Protagonist to Teach the Moral and Civics Class with No Extra Pay
+<!-- TODO: Write this up. -->
+Chose:
+- Teach the class for the good of the school. (domination +1, respect 0, attraction 0, enmity 0)
+- Teach the class in exchange for her owing you a favor. You are aware she really needs it. (domination 0, respect +1, attraction 0, enmity +1)
+- Refuse and suggest she ask the school nurse. (domination 0, respect +1, attraction 0, enmity 0)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Principal Wants the Protagonist to Spy on Other Teachers
+<!-- TODO: Write this up. -->
+Chose:
+- Accept for the good of the school. (domination +1, respect -1, attraction 0, enmity 0)
+- Accept for a bounty on secrets. (domination 0, respect +1, attraction 0, enmity 0)
+- Refuse politely. (domination 0, respect 0, attraction 0, enmity 0)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Principal Wants to Institude Body Punishment for Students and Faculty
+<!-- TODO: Write this up. -->
+Chose:
+- Agree to vote with her and give an impassionate speach in favor. (domination +1, respect 0, attraction 0, enmity -1)
+- Agree to vote with her in exchange for a bribe. (domination +1, respect -1, attraction 0, enmity 0)
+- Refuse politely. (domination 0, respect 0, attraction 0, enmity 0)
+- Refuse offensively and promise to campaign against her. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - School Nurse is Introduced - Opportunity for Flirting
+<!-- TODO: Write this up. -->
+Chose:
+- Be smooth, flirt subtly, make her feel challenged. (domination 0, respect +1, attraction +1, enmity +1)
+- Offer flattery and flirt openly. (domination +1, respect -1, attraction 0, enmity 0)
+- Be polite and professional. (domination +1, respect 0, attraction 0, enmity 0)
+- Be friendly and informal. (domination 0, respect -1, attraction -1, enmity 0)
+- Be informal and crass. (domination +1, respect 0, attraction -1, enmity 0)
+
+::Crisis - Introduction - School Nurse Wants the Protagonist to Keep an Eye on some Student During Classes
+<!-- TODO: Write this up. -->
+Chose:
+- Agree and be attentive and patient. (domination +1, respect 0, attraction 0, enmity -1)
+- Agree and be negligent. (domination +1, respect -1, attraction 0, enmity 0)
+- Agree in exchange for a future favor. (domination +1, respect +1, attraction 0, enmity 0)
+- Refuse politely. (domination 0, respect +1, attraction 0, enmity 0)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - School Nurse Wants the Protagonist to Spend a Break Watching over a Student in her Care
+<!-- TODO: Write this up. -->
+Chose:
+- Agree and be attentive and patient. (domination +1, respect 0, attraction 0, enmity -1)
+- Agree and be curious. (domination +1, respect 0, attraction 0, enmity 0)
+- Agree and be negligent. (domination +1, respect -1, attraction 0, enmity 0)
+- Agree in exchange for a future favor. (domination +1, respect +1, attraction 0, enmity 0)
+- Refuse politely. (domination 0, respect +1, attraction 0, enmity 0)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - School Nurse wants the Protagonist to run some Errand for her (pick up a package at the sex store, perhaps)
+<!-- TODO: Write this up. -->
+Chose:
+- Agree and be professional. (domination +1, respect 0, attraction 0, enmity -1)
+- Agree and be curious. (domination +1, respect 0, attraction 0, enmity 0)
+- Agree in exchange for a future favor. (domination +1, respect +1, attraction 0, enmity 0)
+- Refuse politely. (domination 0, respect +1, attraction 0, enmity 0)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - School nurse wants the Protagonist to spend some money for her (for what???)
+<!-- TODO: Write this up. -->
+Chose:
+- Agree, no questions asked. (domination +1, respect 0, attraction 0, enmity -1)
+- Agree and be curious. (domination +1, respect -1, attraction 0, enmity 0)
+- Agree in exchange for a future favor. (domination +1, respect 0, attraction 0, enmity +1)
+- Refuse politely. (domination 0, respect -1, attraction 0, enmity +1)
+- Refuse offensively. (domination -1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Strict Female Teacher is Introduced - Opportunity to Flirt - and Learn she is Very Strict and is against Office Romance
+<!-- TODO: Write this up. -->
+Chose:
+- Be smooth, flirt subtly, make her feel challenged. (domination -1, respect +1, attraction +1, enmity 0)
+- Be smooth, flirt subtly, make her feel listened to. (domination 0, respect +1, attraction +1, enmity -1)
+- Offer flattery and flirt openly. (domination 0, respect -1, attraction 0, enmity 0)
+- Be polite and professional. (domination 0, respect +1, attraction +1, enmity 0)
+- Be friendly and informal. (domination 0, respect -1, attraction 0, enmity 0)
+
+::Crisis - Introduction - Strict Female Teacher Punishes Rebel Female Student with some Humiliating Task
+<!-- TODO: Write this up. -->
+Chose:
+- Approve and voice admiration for her methods. (domination 0, respect +1, attraction +1, enmity 0)
+- Approve and ogle at the girl. (domination 0, respect -1, attraction -1, enmity 0)
+- Ignore. (domination 0, respect -1, attraction 0, enmity 0)
+- Disapprove, but ogle at the girl. (domination 0, respect -1, attraction -1, enmity +1)
+- Disapprove and try to interrupt the punishment. (domination 0, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Strict female Teacher Punishes Timid Inconvenient Male Student with some Humiliating Task
+<!-- TODO: Write this up. -->
+Chose:
+- Approve and voice admiration for her methods. (domination 0, respect +1, attraction +1, enmity 0)
+- Ignore. (domination 0, respect -1, attraction 0, enmity 0)
+- Disapprove and let it go on. (domination 0, respect 0, attraction 0, enmity 0)
+- Disapprove and try to interrupt the punishment. (domination 0, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Lesbian Teacher is Introduced - Opportunity to Flirt - and Learn She is a Lesbian
+<!-- TODO: Write this up. -->
+Chose:
+- Be smooth, flirt subtly, make her feel challenged. Learn, from rumors, that she is a lesbian. (domination 0, respect +1, attraction +1, enmity 0)
+- Be smooth, flirt subtly, make her feel listened to. Learn, from her, that she is a lesbian. (domination 0, respect +1, attraction 0, enmity 0)
+- Offer flattery and flirt openly. Learn, from her, that she is a lesbian. (domination 0, respect 0, attraction 0, enmity 0)
+- Be polite and professional. Learn, from rumors, that she is a lesbian. (domination 0, respect 0, attraction -1, enmity 0)
+- Be friendly and informal. Learn, from rumors, that she is a lesbian. (domination 0, respect 0, attraction 0, enmity 0)
+- Be informal and crass. Learn, from rumors, that she is a lesbian and be dismissve about it. (domination 0, respect -1, attraction -1, enmity +1)
+
+::Crisis - Introduction - Lesbian Teacher has the Chance to Bond with the Protagonist Observing Girls while Watching the Students' Gym Class
+<!-- TODO: Write this up. -->
+Chose:
+- Offer a whispered playful comentary to what the two of you are watching. (domination 0, respect +1, attraction +1, enmity -1)
+- Exchange meaningful glances at the exciting sight of young female bodies in their prime prancing around. (domination 0, respect +1, attraction 0, enmity 0)
+- Ignore her and ogle the girls. (domination 0, respect -1, attraction 0, enmity 0)
+- Say nothing and leave as soon as possible. (domination 0, respect 0, attraction 0, enmity +1)
+- Make some crude remarks about the girls attending the class. (domination 0, respect -1, attraction -1, enmity +1)
+
+::Crisis - Introduction - Lesbian teacher has some car trouble on the Protagonist's path home
+<!-- TODO: Write this up. -->
+Chose:
+- Politely offer to help, find out it is beyond your capabilities and offer her some company while waiting for a repairman. (domination 0, respect +1, attraction 0, enmity -1)
+- Politely offer to help, find out it is beyond your capabilities and offer her to push the car to your address and offer her dinner at your home while she waits for the repairmen. (domination 0, respect +1, attraction +1, enmity -1)
+- Ignore her. (domination 0, respect -1, attraction 0, enmity 0)
+- Offer help in exchange for a favor to be collected later. (domination 0, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Jerk Male Coach introduces himself in the breakroom. The Lesbian Teacher steps in and he exposes her (panties? breasts?)
+<!-- TODO: Write this up. -->
+Chose:
+- You introduce yourself and try to do him one better by abusing his victim a little more. (domination -1, respect +1, attraction 0, enmity +1)
+- You introduce yourself and high-five his great prank. (domination 0, respect +1, attraction 0, enmity -1)
+- You introduce yourself and ignore his antics. (domination -1, respect +1, attraction 0, enmity 0)
+- You introduce yourself and subtly disapprove his activities of dubious taste. (domination 0, respect -1, attraction 0, enmity 0)
+- You introduce yourself and openly disapprove his shenanigans. (domination +1, respect +1, attraction 0, enmity 0)
+- You introduce yourself, openly disapprove his shenanigans and also try to help the other teacher. (domination +1, respect 0, attraction 0, enmity +1)
+
+::Crisis - Introduction - Jerk Male Coach abuses Timid Theater Nerd Female Student
+<!-- TODO: Write this up. -->
+Chose:
+- You pile on, humiliating his victim further. (domination 0, respect +1, attraction 0, enmity +1)
+- You voice your approval of his actions. (domination 0, respect 0, attraction 0, enmity -1)
+- You voice your enjoyment of his actions. (domination 0, respect +1, attraction 0, enmity -1)
+- You voice your disapproval of his actions. (domination 0, respect +1, attraction 0, enmity 0)
+- You voice your disapproval of his actions, but can't hide your appreciation. (domination +1, respect 0, attraction 0, enmity 0)
+- You voice your disapproval of his actions and threaten to denounce him. (domination -1, respect -1, attraction 0, enmity +1)
+- You voice your disapproval of his actions and try to intervene. (domination 0, respect +1, attraction 0, enmity 0)
+- You ignore the situation. (domination -1, respect 0, attraction 0, enmity 0)
+- You ignore the situation, but, then, tell on him to the Principal. (domination 0, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Jerk Male Coach encourages his best athletes, particularly School's Star Athlete Male Student, to abuse his popularity and abuse some female student - probably Arrogant Good Female Student
+<!-- TODO: Write this up. -->
+Chose:
+- You do your own encouragement to the same end and suggest they also harass Vain Arrogant Cheerleader Female Student. (domination 0, respect -1, attraction 0, enmity +1)
+- You voice your agreement. (domination 0, respect 0, attraction 0, enmity 0)
+- You voice your disagreement and convince athletes to behave differently. (domination 0, respect 0, attraction 0, enmity +1)
+- You voice your disagreement and fail to convince athletes to behave differently. (domination 0, respect -1, attraction 0, enmity 0)
+- You voice your disagreement and threaten the athletes. (domination 0, respect -1, attraction 0, enmity +1)
+- You voice your disagreement and denounce the Coach to the Principal. (domination +1, respect -1, attraction 0, enmity +1)
+
+::Crisis - Introduction - Discuss Slavery at Work
+<!-- TODO: Write this up. -->
+Chose:
+- Position yourself in favor of slavery. (domination +1)
+- Take an undecided position. (respect -1)
+- Position yourself against of slavery. (domination -1)
+
+::Crisis - Introduction - Rebel student misbehaves in class and tests Protagonist's authority/strictness
+<!-- TODO: Write this up. -->
+Chose:
+- Smoothly humiliate her in front of the whole class. (domination 0, respect -1, attraction 0, enmity +1)
+- Send her to the Principal. (domination 0, respect -1, attraction 0, enmity +1)
+- Warn her not to repeat it. (domination 0, respect -1, attraction 0, enmity +1)
+- Ignore her. (domination 0, respect -1, attraction 0, enmity +1)
+
+
+- Define: domination; respect; attraction; enmity.
+### Crisis
+- Rebel student needs help.
+- Rebel Female Student plans to prank Arrogant Good Female Student. The Protagonist has the opportunity to intervene.
+- Flirty-Slutty female student flirts with Protagonist after class and tests his moral.
+- Flirty-Slutty female student passes a note in class about a party students will attend. Protagonist has the opportunity to intercept the note.
+- School's Star Athlete Male Student is friendly to the Protagonist, after class. He is arrogant and puts up some kind of show showing how he has Flirty-Slutty female student wrapped around his finger.
+- School's Star Athlete Male Student is seen by the Protagonist talking to his daughter in the school's halls.
+- School's Star Athlete Male Student is at the Principal's door, but he seems very confident. The Protagonist finds out that he gets easily forgiven by the Principal in spite of having been sent for punishment by the Strict Female Teacher.
+- School's Star Athlete Male Student and the School Nurse exchange some barbs, but neither of them gets precedence. It is regarding some girl.
+- School's Star Athlete Male Student shows up at the Protagonist's door (to study with the daughter? To bring him some papers? To sell something - a raffle?). He impresses the Wife.
+- Bully Male Student plans to prank Timid Theater Nerd Female Student. The Protagonist has the opportunity to interfere.
+- Bully Male Student threatens Obnoxious Nerd Male Student and extorts money from him. The Protagonist has the opportunity to intervene. The victim's mother - Milf Female Parent 1 - comes talk about the event with the Protagonist.
+- Bully Male Student - a bad student - needs help.
+- Opportunity to vote on slavery.
+- Opportunity to buy a slaver-master book.
+- Opportunity to teach about morality or immorality of slavery.
+- Opportunity to confront the school's star athlete.
+- Opportunity to learn about body-changing xenotech.
+- Opportunity to learn about mind-changing xenotech.
+- Arrogant Good Female Student needs help.

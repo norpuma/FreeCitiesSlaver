@@ -1,0 +1,453 @@
+::Prologue Functions [script]
+window.createProtagonist(firstName, gender, standardName, lastName, age, ethnicity, tallness, bodyFatTendency, learning, stamina, face, sexualAttributeSize, listener, fitness, knowledge, charm, appearance, leisure){
+    let protagonist = new BaseCharacter(standardName, gender)
+    protagonist.names.setName("first", firstName)
+    protagonist.names.setName("last", lastName)
+    protagonist.body = new CharacterBody(gender, age)
+    protagonist.body.ethnicity = ethnicity
+    protagonist.body.heightGroup = tallness
+    protagonist.body.bodyFatTendency = bodyFatTendency
+    let faceValue = FaceProperties.PLAIN_LEVEL
+    switch(face){
+        case -1:
+            faceValue = FaceProperties.UGLY_LEVEL
+            break
+        case 0:
+            break
+        case 1:
+            faceValue = FaceProperties.BEAUTIFUL_LEVEL
+            break
+    }
+    protagonist.body.bodyParts.FACE.value = faceValue
+    let attributeSize = BodyPartsSize.AVERAGE
+    switch(sexualAttributeSize){
+        case -1:
+            attributeSize = BodyPartsSize.SMALL
+            break
+        case 0:
+            break
+        case 1:
+            attributeSize = BodyPartsSize.BIG
+            break
+    }
+    if (gender == Gender.MALE){
+        protagonist.body.bodyParts.PENIS.size = attributeSize
+    } else {
+        protagonist.body.bodyParts.BREASTS.size = attributeSize
+    }
+    protagonist.attainments = new CharacterAttainments()
+    protagonist.attainments.perks = new Map()
+    if (learning != 0){
+        protagonist.attainments.perks.set("FAST_LISTENER", learning)
+    }
+    if (stamina != 0){
+        protagonist.attainments.perks.set("STAMINA", stamina)
+    }
+    if (listener != 0){
+        protagonist.attainments.perks.set("GOOD_LISTENER", listener)
+    }
+    protagonist.attainments.fitness = fitness + stamina
+    protagonist.attainments.knowledge = knowledge + learning
+    protagonist.attainments.charm = charm + listener
+    protagonist.attainments.grooming = appearance
+    protagonist.attainments.leisure = leisure
+
+    State.variables.protagonist = protagonist
+
+    State.variables.protagonistSetupProfile = new Object()
+    State.variables.protagonistSetupProfile.dutifulAtSchool = 0
+    State.variables.protagonistSetupProfile.flirtyAtSchool = 0
+    State.variables.protagonistSetupProfile.strictAtSchool = 0
+    State.variables.protagonistSetupProfile.dutifulAtHome = 0
+    State.variables.protagonistSetupProfile.flirtyAtHome = 0
+    State.variables.protagonistSetupProfile.dominantTowardsLifePartner = 0
+    State.variables.protagonistSetupProfile.generousTowardsLifePartner = 0
+    State.variables.protagonistSetupProfile.strictTowardsDaughter = 0
+    State.variables.protagonistSetupProfile.dominantTowardsDaughter = 0
+    State.variables.protagonistSetupProfile.generousTowardsDaughter = 0
+    State.variables.protagonistSetupProfile.additionalTraitModifiers = new Map()
+}
+
+window.createProtagonistsLifePartner(lifePartnerGender, lifePartnerAge, lifePartnerStandardName, lifePartnerJobLevel, lifePartnerJobTitle){
+    let lifePartner = new BaseCharacter(lifePartnerStandardName, lifePartnerGender)
+    lifePartner.setName("first", lifePartnerStandardName)
+    lifePartner.body = new CharacterBody(lifePartnerGender, lifePartnerAge)
+    lifePartner.attainments = new CharacterAttainments()
+    lifePartner.attainments.job = new CharacterJob(lifePartnerJobLevel, lifePartnerJobTitle)
+
+    let relationshipWithProtagonist = new CharacterRelationship(State.variables.protagonist)
+    lifePartner.relationships.set(State.variables.protagonist, relationshipWithProtagonist)
+
+    State.variables.protagonistsLifePartner = lifePartner
+
+    let protagonistsRelationship = new CharacterRelationship(State.variables.protagonistsLifePartner)
+    State.variables.protagonist.relationships.set(State.variables.protagonistsLifePartner, protagonistsRelationship)
+}
+
+window.createProtagonistsDaughter(daughterStandardName, daughterAge){
+    let daughterGender = Gender.FEMALE
+    let daughter = new BaseCharacter(daughterStandardName, daughterGender)
+    daughter.setName("first", daughterStandardName)
+    daughter.body = new CharacterBody(daughterGender, daughterAge)
+    daughter.attainments = new CharacterAttainments()
+    daughter.attainments.job = new CharacterJob(JobStatusLevels.STUDENT, "student")
+
+    let relationshipWithProtagonist = new CharacterRelations(State.variables.protagonist)
+    daughter.relationships.set(State.variables.protagonist, relationshipWithProtagonist)
+
+    State.variables.protagonistsDaughter = daughter
+    let protagonistsRelationship = new CharacterRelationship(State.variables.protagonistsDaughter)
+    State.variables.protagonist.relationships.set(State.variables.protagonistsDaughter, protagonistsRelationship)
+
+    if (State.variables.protagonistsLifePartner !== undefined){
+        let relationshipWithStepParent = new CharacterRelationship(State.variables.protagonistsLifePartner)
+        daughter.relationships.set(State.variables.protagonistsLifePartner)
+
+        let stepParentsRelationship = new CharacterRelationship(State.variables.protagonistsDaughter)
+        State.variables.protagonistsLifePartner.relationships.set(State.variables.protagonistsDaughter, stepParentsRelationship)
+    }
+}
+
+window.completeProtagonistCreationFromSetupProfile(){
+    let protagonist = State.variables.protagonist
+    let unfitBodyFatKind = protagonist.body.bodyFatTendency
+    let unfitBalanceType = BodyFatBalanceLevels.VOLUPTUOUS_BODY_LEVEL
+    if (unfitBodyFatKind == BodyFatTendency.SLIM_TENDENCY){
+        unfitBalanceType = BodyFatBalanceLevels.SLIM_BODY_LEVEL
+    }
+    switch (protagonist.fitness){
+        case TraitInstensity.NOT_LEVEL:
+            protagonist.body.bodyFatBalance = unfitBalanceType
+            protagonist.body.bodyFatLevel = VoluptuousBodyLevels.ENORMOUS_LEVEL // Same value as SlimBodyLevels.BONY_LEVEL
+            break
+        case TraitInstensity.INSIGNIFICANTLY_LEVEL:
+            protagonist.body.bodyFatBalance = unfitBalanceType
+            protagonist.body.bodyFatLevel = VoluptuousBodyLevels.FAT_LEVEL // Same value as SlimBodyLevels.SKINNY_LEVEL
+            break
+        case TraitInstensity.MODERATELY_LEVEL:
+            protagonist.body.bodyFatBalance = unfitBalanceType
+            protagonist.body.bodyFatLevel = VoluptuousBodyLevels.CHUBBY_LEVEL // Same value as SlimBodyLevels.THIN_LEVEL
+            break
+        case TraitInstensity.SIGNIFICANTLY_LEVEL:
+            protagonist.body.bodyFatBalance = unfitBalanceType
+            protagonist.body.bodyFatLevel = VoluptuousBodyLevels.VOLUPTUOUS_LEVEL // Same value as SlimBodyLevels.SLIM_LEVEL
+            break
+        case TraitInstensity.VERY_LEVEL:
+            protagonist.body.bodyFatBalance = BodyFatBalanceLevels.FIT_BODY_LEVEL
+            protagonist.body.bodyFatLevel = FitBodyLevels.SHREDDED_LEVEL
+            break
+        case TraitInstensity.EXTREMELY_LEVEL:
+            protagonist.body.bodyFatBalance = BodyFatBalanceLevels.FIT_BODY_LEVEL
+            protagonist.body.bodyFatLevel = FitBodyLevels.MUSCULAR_LEVEL
+            break
+        case TraitInstensity.EXCESSIVELY_LEVEL:
+            protagonist.body.bodyFatBalance = BodyFatBalanceLevels.FIT_BODY_LEVEL
+            protagonist.body.bodyFatLevel = FitBodyLevels.HYPERTROPHIED_LEVEL
+            break
+        default:
+            throw new Error("ERROR:window.completeProtagonistCreationFromSetupProfile: Can't find protagonist.fitness = '" + protagonist.fitness + "' among TraitIntensity levels.")
+    }
+
+    let protagonistSetupProfile = State.variables.protagonistSetupProfile
+    let jobFitnessScore = (protagonistSetupProfile.dutifulAtSchool * 3) + (protagonistSetupProfile.strictAtSchool * -2) + protagonistSetupProfile.flirtyAtSchool + protagonistSetupProfile.dutifulAtHome + protagonistSetupProfile.strictTowardsDaughter // final range is between -8 and +8
+    if (jobFitnessScore >= 5){
+        protagonist.attainments.job = new CharacterJob(JobStatusLevels.MANAGER_POSITION_JOB, "teacher and assistant principal")
+    } else if (jobFitnessScore >= -5){
+        protagonist.attainments.job = new CharacterJob(JobStatusLevels.WHITE_COLLAR_JOB, "teacher")
+    } else {
+        protagonist.attainments.job = new CharacterJob(JobStatusLevels.MENIAL_JOB, "janitor")
+    }
+    let protagonistJobStatusLevel = JobStatusLevels.getLevelFromName(protagonist.attainments.job)
+
+    let lifePartner = State.variables.protagonistsLifePartner
+    if (lifePartner !== undefined){
+        let lifePartnerJobStatusLevel = JobStatusLevels.getLevelFromName(State.variables.protagonistsLifePartner.attainments.job)
+        let lifePartnerSatisfactionScore = protagonistSetupProfile.dutifulAtHome + protagonistSetupProfile.flirtyAtHome + protagonistSetupProfile.dominantTowardsLifePartner + protagonistSetupProfile.generousTowardsLifePartner + protagonistSetupProfile.strictTowardsDaughter // final range between -5 and 5
+        if ((protagonistJobStatusLevel == JobStatusLevels.MANAGER_POSITION_JOB_LEVEL) && (lifePartnerJobStatusLevel == JobStatusLevels.MENIAL_JOB_LEVEL)){
+            lifePartnerSatisfactionScore += 2
+        }
+        let lifePartnerRespectScore = protagonistSetupProfile.dutifulAtHome + protagonistSetupProfile.dominantTowardsLifePartner + protagonistSetupProfile.strictTowardsDaughter
+        if (protagonistJobStatusLevel > lifePartnerJobStatusLevel){
+            lifePartnerRespectScore += 1
+        } else if (protagonistJobStatusLevel < lifePartnerJobStatusLevel){
+            lifePartnerRespectScore -= 2
+        }
+
+        let lifePartnersRelationshipToProtagonist = lifePartner.relationships.get(State.variables.protagonist)
+        if (lifePartnerSatisfactionScore >= 4){
+            lifePartnersRelationshipToProtagonist.feelings.love = EmpathyLevels.SWEET
+        } else if (lifePartnerSatisfactionScore >= 0) {
+            lifePartnersRelationshipToProtagonist.feelings.love = EmpathyLevels.AMIABLE
+        } else if (lifePartnerSatisfactionScore >= -1) {
+            lifePartnersRelationshipToProtagonist.feelings.love = EmpathyLevels.ALOOF
+        } else {
+            lifePartnersRelationshipToProtagonist.feelings.love = EmpathyLevels.CALLOUS
+        }
+        if (lifePartnerRespectScore >= 4){
+            lifePartnersRelationshipToProtagonist.feelings.respect = 2
+        } else if (lifePartnerRespectScore >= 2){
+            lifePartnersRelationshipToProtagonist.feelings.respect = 1
+        } else if (lifePartnerRespectScore >= -1){
+            lifePartnersRelationshipToProtagonist.feelings.respect = 0
+        } else {
+            lifePartnersRelationshipToProtagonist.feelings.respect = -1
+        }
+    }
+
+    let daughter = State.variables.protagonistsDaughter
+    let daughterSatisfactionScore = (protagonistSetupProfile.strictTowardsDaughter * -1) + (protagonistSetupProfile.dominantTowardsDaughter * -1) + protagonistSetupProfile.generousTowardsDaughter + protagonistSetupProfile.dominantTowardsLifePartner // final range between -4 and 4
+    let daughterRespectScore = protagonistSetupProfile.strictTowardsDaughter + protagonistSetupProfile.dominantTowardsDaughter + protagonistSetupProfile.dominantTowardsLifePartner
+    if (protagonistJobStatusLevel == JobStatusLevels.MANAGER_POSITION_JOB){
+        daughterRespectScore += 1
+    } else if (protagonistJobStatusLevel == JobStatusLevels.MENIAL_JOB){
+        daughterRespectScore -= 2
+    }
+    let daughtersRelationshipToProtagonist = daughter.relationships.get(State.variables.protagonist)
+    if (daughterSatisfactionScore >= 3){
+        daughtersRelationshipToProtagonist.feelings.love = EmpathyLevels.SWEET
+    } else if (daughterSatisfactionScore >= 0) {
+        daughtersRelationshipToProtagonist.feelings.love = EmpathyLevels.AMIABLE
+    } else if (daughterSatisfactionScore >= -1) {
+        daughtersRelationshipToProtagonist.feelings.love = EmpathyLevels.ALOOF
+    } else if (daughterSatisfactionScore >= -2) {
+        daughtersRelationshipToProtagonist.feelings.love = EmpathyLevels.CALLOUS
+    } else {
+        daughtersRelationshipToProtagonist.feelings.love = EmpathyLevels.MEAN
+    }
+    if (daughterRespectScore >= 4){
+        daughtersRelationshipToProtagonist.feelings.respect = 2
+    } else if (daughterRespectScore >= 3){
+        daughtersRelationshipToProtagonist.feelings.respect = 1
+    } else if (daughterRespectScore >= 0){
+        daughtersRelationshipToProtagonist.feelings.respect = 0
+    } else if (daughterRespectScore >= -2) {
+        daughtersRelationshipToProtagonist.feelings.respect = -1
+    } else {
+        daughtersRelationshipToProtagonist.feelings.respect = -2
+    }
+}
+
+::Prologue - Character Builder
+The Hornton citizen application is lengthy and in-depth. It has some very personal questions, but you have been instructed to answer everything and be honest and thorough in your answers.
+
+Name: "Victor \"Vic\" Rawlings"
+<<set _firstName = "Victor">>\
+<<set _standardName = "Vic">>\
+<<set _lastName = "Rawlings">>\
+Gender: Male
+<<set _gender = "MALE">>\
+Age: 36
+<<set _age = 36>>\
+Ethnicity: Caucasian
+<<set _ethnicity = "CAUCASIAN">>\
+Height: 1m72
+<<set _tallness = "SMALL">>\
+Metabolism: Slow metabolism
+<<set bodyFatTendency = "VOLUPTUOUS_TENDENCY">>\
+Special Notes:
+- School transcript: GOOD
+- Stamina test results: AVERAGE
+- Portrait picture: AVERAGE
+- Penis size: MODEST
+- Listening Skills: GOOD
+<<set _learning = 1>>\
+<<set _stamina = 0>>\
+<<set _face = 0>>\
+<<set _sexualAttributeSize = -1>>\
+<<set _listener = 1>>\
+
+About your weekly activities:
+- How much care do you take of your fitness: INSIGNIFICANTLY
+<<set _fitness = "INSIGNIFICANTLY">>\
+- How much care do you take of your knowledge: SIGNIFICANTLY
+<<set _knowledge = "SIGNIFICANTLY">>\
+- How much care do you take of your social skills: MODERATELY
+<<set charm = "MODERATELY">>\
+- How much care do you take of your appearance: INSIGNIFICANTLY
+<<set _appearance = "INSIGNIFICANTLY">>\
+- How much care do you take of your duties: SIGNIFICANTLY
+<<set _duties = "SIGNIFICANTLY">>\
+- How much care do you take of your leisure: MODERATELY
+<<set _leisure = "MODERATELY">>\
+
+Do you have a life partners? YES
+<<set _lifePartner = true>>\
+What is the name of your life partner? "Katherine"
+<<set _lifePartnerStandardName = "Kate">>\
+What is the gender of your life partner? FEMALE
+<<set _lifePartnerGender = "FEMALE">>\
+What is the age of your life partner? 28
+<<set _lifePartnerAge = 28>>\
+Does your life partner have a job? YES
+What is the job of your life partner? "Sales Reprenstative"
+<<set _lifePartnerJobLevel = "WHITE_COLLAR">>\
+<<set _lifePartnerJobTitle = "sales representative">>\
+
+Do you share your home with anyone else? YES
+What is your relationship to that person? Daughter
+What is the name of your daughter? "Daisy"
+<<set _daughterStandardName = "Daisy">>\
+What is the gender of your daughter? FEMALE
+<<set _daughterGender = "FEMALE">>\
+What is the age of your daughter? 18
+<<set _daughterAge = 18>>\
+Beware that all people below the age of 21 are considered minors in Hornton and MUST attend Finishing School classes from Monday to Friday, from 8am to 12pm
+Does your daughter have a job? NO
+What is the occupation of your daughter? "Student"
+<<set _daughterJob = "STUDENT">>\
+
+
+<<link "Continue" "Prologue - Prologue Historical Decisions">>\
+    <<run createProtagonist(_standardName, _gender, _firstName, _lastName, _age, _ethnicity, _tallness, _bodyFatTendency, _learning, _stamina, _face, _sexualAttributeSize, _listener, _fitness, _knowledge, _charm, _appearance, _leisure)>>\
+    <<if _lifePartner == true>><<run createProtagonistsLifePartner(_lifePartnerGender, _lifePartnerAge, _lifePartnerStandardName, _lifePartnerJobLevel, _lifePartnerJobTitle)>><</if>>\
+    <<run createProtagonistsDaughter(_daughterStandardName, _daughterAge)
+<</link>>
+
+::Prologue - Prologue Historical Decisions
+Now, to map out your personality, think back to some relevant episodes of your past.
+
+::Prologue - Historical Decisions - Diligence at School
+One of the questions on the citizenship application reminds you of a time when you found a leaking faucet at school.
+
+Did you repair the faucet yourself, because you know that everyone shares responsibility for the school's good repair and, besides, you can be quite handy with a wrench?
+
+Did you immediately call maintenance, because you know your time would be better spent grading student tests?
+
+::Prologue - Historical Decisions - Diligence at School - Diligent
+<<set $protagonistSetupProfile.dutifulAtSchool += 1>>\
+You remember that, at the time, you found that the issue was with the pipe connection at the wall. When you went under the sink to fix it, you found that there was a flaw in the wall and that you could look into the women's bathroom. @@sexy;As you repaired the faucet, you saw Mikaela, a female teacher, enter the other bathroom, looking hurried and anxious. She entered a stall and you were surprised to soon hear soft moans and a faint vibration coming from the otherwise empty bathroom. No one else you have noticed if not so close to the hole in the wall and in a mostly empty and silent bathroom.@@
+
+@@sexy;You followed Mikaela's self-love from the position of her feet under the stall door. She slowly spread her knees farther and farther and leaned forward in her seat. You imagined her relaxing as she pressed the vibrator against her wet crotch. Then, she lifted her knees, resting only the balls of her feet on the floortiles, tensing for an oncoming climax. Her moans became louder and her breathing shorter. After only a few minutes, you saw her legs trembling as she let out a long, relieved sigh. You were rock hard as you listened to her orgasm and realized you had stopped repairing the pipe for quite some time. You had the opportunity to see Mikaela leave the stall and fix her disheveled hair before you resumed your work.@@
+
+::Prologue - Historical Decisions - Diligence at School - Negligent
+<<set $protagonistSetupProfile.dutifulAtSchool -= 1>>\
+You remember that the principal actually burdened you with pesonally supervising the repair. The school called a maintenance service and you isolated the area to wait for the repair person. @@sexy;You were quite surprised when a cute youg woman, probably in her early twenties, showed up instead of the cliché hairy, fat, middle-aged man you had expected. She was wearing denim shorts with suspenders and a white shirt and drew attention to her generous bosom. The young woman was friendly and eager as she told you it was her first day on the job.@@
+
+@@sexy;Following her work was more interesting than you had predicted. Watching her get on all fours to fix the issue with the faucet under the sink offered you an intersting sight as she had a plump backside and her bottoms fell lower than they should, revealing part of her ass crack. Then, after a few minutes during which you were mesmerized by her swaying buttocks, she cracked the pipe open and got soaked in water before she could close the register. Her white shirt became mostly transparent and you were rewarded with the view of her round, perky tits and delighted at the surprise of shiny barbells going through her nipples. She tried to play it cool, but her face became crimson in embarrassment. You offered the young woman your coat and she finished the job twenty minutes later with no other incidents and you were left with that exciting memory.@@
+
+::Prologue - Historical Decisions - Flirtiness at School
+One of the questions on the citizenship application reminds you of a time, early in your days as a teacher, when you were still single. You had to come in particularly early at the school and you thought you were alone. Giovana Radeker, a tall redheaded teacher, came into the teacher's lounge with headphones on, eyes closed, humming and swaying to a music you couldn't hear.
+
+Did you try to get into her rhythm and surprise her dancing with her when she opened her eyes?
+
+Did you respect her privacy and step away, trying to enjoy some alone time yourself in your classroom before students started arriving?
+
+::Prologue - Historical Decisions - Flirtiness at School - Flirty
+<<set $protagonistSetupProfile.flirtyAtSchool += 1>>\
+It took you a few instants, but you identified the song from Giovana's humming and started dancing closer and closer to her. She eventually sensed your presence and opened her eyes. It took her half a second to realize there was someone else there and dancing with her. She let out a little shriek of surprise and tumbled back before recognizing you. You didn't stop dancing and she eventually got the joke and laughed with you.
+
+She explained she often came in early to run on the track field before the students arrived. You offered to make her company as she ran and she gladly accepted the offer. @@sexy;She was in better shape than you, running every day like she was, and that rewarded you with a great view of her shapely bottom as she took the lead.@@ You got the opportunity to talk to her on several occasions after that and you even took her to dinner, but it never resulted in anything as you met $protagonistsLifePartner.name shortly after and didn't have time for Giovana after that.
+
+::Prologue - Historical Decisions - Flirtiness at School - Demure
+<<set $protagonistSetupProfile.flirtyAtSchool -= 1>>\
+You silently stepped away and went to your classroom to finish reading, before the students arrived, a book you were enjoying. A couple of minutes later, however, you found Giovana sitting in front of you, having silently arrived and sat down waiting for you to notice. Startled, you fell off your chair. @@sexy;After laughing hard for a couple of seconds, Giovana bent down to hlep you back up and you got an unexpected good glance at her cleavage.@@ She apologized for scaring you and offered to get you a cup of coffee to replace the one you spilled in your surprise.
+
+She explained she often came in early to run on the track field before the students arrived. The two of you talked over a some coffee and she asked about the book you were reading. She got interested and the following few weeks, she found you at school at one moment or another to talk about the book. You even had dinner together one day, a thinly veiled date. She got a boyfriend before she finished the book, however, and the two of you got fewer and fewer opportunities to talk before she left the school at the end of the semester.
+
+::Prologue - Historical Decisions - Strictness at School
+One of the questions on the citizenship application reminds you of a difficult situation when you were teaching a class. Students sometimes throw objects at other students, but you remember a time where it you, a teacher, hit by a half-eaten apple object. Everyone had had a bad day at school, you had gotten stuck in traffic and arrived half an hour late and gotten berated by the principal. The students had had the end of year dance cancelled that same morning. It was Andreza Dornelles who had thrown the apple, a troubled and troublesome student. From the defiant look on her face, she expected to be promptly identified.
+
+Did you send her to the principal, give her detention and threaten her with expulsion? It was important to make it clear that there would be no tolerance for students venting their frustrations on teachers.
+
+Did you pick up the apple, thank Andreza, feign considering taking a bite and, then, telling the students you would save it for later? Defusing the situation with a joke would lighten the mood of the entire classroom and show students you understood their feelings.
+
+::Prologue - Historical Decisions - Strictness at School - Strict
+<<set $protagonistSetupProfile.strictAtSchool += 1>>\
+There was deadly silence in the classroom after Andreza went to the principal and the students actually paid attention to what you were teaching. You supervised Andreza's detention yourself, that day, after school, and the principal gave you a lot of leeway to devise her punishment after she learned what happened in your classroom. @@sexy;She tried to remain defiant when you told her she would scrub bathroom floors, she just rolled her eyes when you told her she would do it with a toothbrush. When you explained she would do it in her underwear, however, she finally balked. She tried to protest, to refuse to do it. When you brought up suspension as an alternative, she wised up as a look of palpable fear contorted her features.@@
+
+@@sexy;You had one hour of enjoying watching Andreza's panty-clad bottoms swaying and her cleavage swinging as she scrubbed the floors.@@
+
+::Prologue - Historical Decisions - Strictness at School - Lenient
+<<set $protagonistSetupProfile.strictAtSchool -= 1>>\
+There was a moment of silence in the classroom, then one of the students groaned at the forced joke. The sounded seemed to break a damn and you saw every student relax. Even Andreza couldn't help but crack a smile as she rolled her eyes. At the end of the class, you were surprised when your troublesom student approached you, here eyes were nervously avoiding yours and her whole body indicated she was tense and embarrassed to be talking to you. She asked to talk and you closed the door and asked her to sit down. Andreza started by apologizing for the apple, then, she confided in you, recounting how she was having serious problems at home and that she had hoped to escape her family for a few hours at the dance. You couldn't really help her with her problems, but she was thankful to you for listening to her.
+
+Andreza eventually started talking to you everyday after class for a few weeks. She opened up and her trust in you actually made her a better student. @@sexy;She became that year's valedictorian and when she had a wardrobe malfuction backstage, it was you she called for. Seeing Andreza's hot body barely covered in her underwear as the two of you tried to fix her graduation gown is an image you won't soon forget.@@
+
+::Prologue - Historical Decisions - Diligence at Home
+One of the questions on the citizenship application reminds you of an incident when you changing addresses.
+
+<<if $protagonistsLifePartner !== undefined>>\
+You remember the first time you moved into a home with $protagonistsLifePartner.name. The place was a mess at first and it took the two of you a lot of hours on that first weekend after you moved in to clean up the house. Then, there was the cluttered, badly lighted, very dusty basement to clean up.
+<<else>>\
+You remember the first time you moved with a girlfriend. You had just rented a new place and she agreed to help you move as she brought her stuff to move in too.  The place was a mess at first and it took the two of you a lot of hours on that first weekend after you moved in to clean up the house. Then, there was the cluttered, badly lighted, very dusty basement to clean up.
+<</if>>\
+
+Did you postpone cleaning up the basement for three months as you really had nothing to store down there? Besised, with your alergies you would have been a wreck, it made total sense to pay a couple of students to clean up the place during the summer break.
+
+Did you clean up the basement the next weekend, figuring that you'd rather do it straight away and have no more worries, just enjoying the house from then on? You had a horrible week after being exposed to that much dust, but you saved some money and scored some points with your girl.
+
+::Prologue - Historical Decisions - Diligence at Home - Diligent
+<<set $protagonistSetupProfile.dutifulAtHome += 1>>\
+There was no reason to spend time and risk your health cleaning the basement if you had nothing to store there. Your partner kept bugging you clean up the place, but there really was no good reason for it.
+
+
+
+
+Managing your time better gave you the opportunity to improve one of your investment traits.
+Select Trait to improve: KNOWLEDGE
+<<set $protagonistSetupProfile.additionalTraitModifiers.set("KNOWLEDGE", 1)>>\
+
+::Prologue - Historical Decisions - Diligence at Home - Negligent
+<<set $protagonistSetupProfile.dutifulAtHome -= 1>>\
+
+::Prologue - Historical Decisions - Flirtiness at Home
+One of the questions on the citizenship application reminds you
+
+::Prologue - Historical Decisions - Flirtiness at Home - Flirty
+<<set $protagonistSetupProfile.flirtyAtHome += 1>>\
+::Prologue - Historical Decisions - Flirtiness at Home - Demure
+<<set $protagonistSetupProfile.flirtyAthome -= 1>>\
+
+::Prologue - Historical Decisions - Dominance towards Partner
+One of the questions on the citizenship application reminds you
+
+::Prologue - Historical Decisions - Dominance towards Partner - Dominant
+<<set $protagonistSetupProfile.dominantTowardsLifePartner += 1>>\
+::Prologue - Historical Decisions - Dominance towards Partner - Submissive
+<<set $protagonistSetupProfile.dominantTowardsLifePartner -= 1>>\
+
+::Prologue - Historical Decisions - Generosity towards Partner
+One of the questions on the citizenship application reminds you
+
+::Prologue - Historical Decisions - Generosity towards Partner - Generous
+<<set $protagonistSetupProfile.generousTowardsLifePartner += 1>>\
+
+::Prologue - Historical Decisions - Generosity towards Partner - Selfish
+<<set $protagonistSetupProfile.generousTowardsLifePartner -= 1>>\
+
+::Prologue - Historical Decisions - Strictness towards Daughter
+One of the questions on the citizenship application reminds you
+
+::Prologue - Historical Decisions - Strictness towards Daughter - Strict
+<<set $protagonistSetupProfile.strictTowardsDaughter += 1>>\
+::Prologue - Historical Decisions - Strictness towards Daughter - Lenient
+<<set $protagonistSetupProfile.strictTowardsDaughter -= 1>>\
+
+::Prologue - Historical Decisions - Dominance towards Daughter
+One of the questions on the citizenship application reminds you
+
+::Prologue - Historical Decisions - Dominance towards Daughter - Dominant
+<<set $protagonistSetupProfile.dominantTowardsDaughter += 1>>\
+::Prologue - Historical Decisions - Dominance towards Daughter - Submissive
+<<set $protagonistSetupProfile.dominantTowardsDaughter -= 1>>\
+
+::Prologue - Historical Decisions - Generosity towards Daughter
+One of the questions on the citizenship application reminds you
+
+::Prologue - Historical Decisions - Generosity towards Daughter - Generous
+<<set $protagonistSetupProfile.generousTowardsDaughter += 1>>\
+::Prologue - Historical Decisions - Generosity towards Daughter - Selfish
+<<set $protagonistSetupProfile.generousTowardsDaughter -= 1>>\
+
+::Prologue - End - Profile
+<<if $protagonist.names.standard != $protagonist.names.first>><<set _standardName = "\"" + $protagonist.names.standard>><<else>> + "\"">><<set _standardName = "">><</if>>\
+<<switch $protagonist.body.ethnicity>><<case "CAUCASIAN">><<set _ethnicity = "caucasian">><<break>><<case "BLACK">><<set _ethnicity = "black">><<break>><<case "LATINX">><<set _ethnicity = "latino">><<break>><</switch>>\
+<<if $protagonist.body.heightGroup == "SHORT">><<set _tallnessQualification = "shorter than average">><<elseif $protagonist.body.heightGroup == "AVERAGE">><<set _tallnessQualification = "of average height">><<else>><<set _tallnessQualification = "taller than average">><</if>>\
+<<if $protagonist.body.bodyParts.FACE.value > 0>><<set _faceAdjective = "a pretty">><<elseif $protagonist.body.bodyParts.FACE.value == 0>><<set _faceAdjective = "a plain and ordinary">><<else>><<set _faceAdjective = "a rather unattractive">><</if>>\
+You are $protagonist.names.first _standardName $protagonist.names.last, a $protagonist.body.age years old _ethnicity man. You are moving from Foret to the town of Hornton. You just got a job as a $protagonist.attainments.job.title at the Hornton Finishing School. You are _tallnessQualification and have _faceAdjective face.
+<!-- TODO: Add more interpretation of variables for body descriptors -->
+
+You are not very fit, currently, and your body is on the pudgy side. You consider yourself a smart person and a fast learner.
+
+<!-- TODO: Add support for male life partner. -->
+Your your young wife $protagonistsLifePartner.names.standard moved to Hornton one year ago and the two of you have been apart since. It was hard to be an year appart, but moving into Hornton should be worth it. She is a $protagonistsLifePartner.attainments.job.title at a local magazine.

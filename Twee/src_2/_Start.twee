@@ -1,0 +1,35 @@
+::StoryTitle
+A Free Cities Slaver
+
+:: StorySettings
+
+:: StoryData
+{
+        "ifid": "53E2D38D-AA68-484B-8EDC-88A1B76B43B1"
+}
+
+:: StoryInit [Variables]
+
+::Start
+<<include "Presentation">>
+
+[[Introduction|Introduction]]
+[[Game Start]]
+
+::Presentation
+An erotic game of powerplay, mind control and body modifications.
+
+Inspired by Freecities.
+
+::Introduction
+// TODO: AND THERE SHOULD BE AN INTRODUCTION HERE.
+
+<<link "Start the game." "Game Start">><</link>>
+
+::Setup [background]
+<<include "Introduction">>
+<<include "Protagonist - Setup">>
+
+::Game Start
+<<set $gameStarted = true>>\
+<<include "Short Intro Text">>

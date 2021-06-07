@@ -1,0 +1,28 @@
+::Examination Scripts [script]
+/*
+    Dannie is a caucasian 19 years old teenager. She has long, wavy black hair and piercing pale-blue eyes on a cute face of creamy white skin. She is wearing in a grey dress. She is of average height, has a slim built and you don't yet know how big her breasts are.
+
+    You and her are acquainted and she is also a student of yours. She is a student at the Finishing School.
+
+    You know Dannie to be smug, but nice, brave and smart. She has little decorum. She is diligent and not very flirty.
+
+
+    Paula is a latina 32 years old mature woman. She has long, black hair and dark eyes on an ordinary face of tanned skin. She is wearing a golden dress with golden high heeled sandals. She is short, has a voluptuous build and big breasts.
+
+    She is your friend, you are roommates and you and her are co-workers. She works at the Research Center.
+
+    You know Paula to be arrogant, cruel, cautious and smart. She has close to no decorum. She is somewhat indolent and flirty.
+*/
+
+Macro.add('showCharacterExaminationResult', {
+	tags     : null,
+	handler  : function () {
+        let protagonist = State.variables.protagonist
+        let target = this.payload[0].args[0]
+        let relationship = protagonist.relationships[target]
+        if (( === undefined) || (protagonist.relationships[target]))
+        let output = ""
+        output +=  "\n"
+		$(this.output).wiki(output);
+	}
+});

@@ -1,0 +1,140 @@
+::Schedule Control Styles [stylesheet]
+#DayPlanTableRow {
+    border-bottom: 1px solid grey;
+}
+
+::Schedule Control [script]
+var defaultDayPlan = [
+    {
+        startHour: 6,
+        durationInHours: 2,
+        planningTextPassage: "Main Loop - Default Description - Planning to Waking Up and Executing Morning Preparations",
+        linkText: "Wake up.",
+        retrospectivePassageName: "Main Loop - Default Description - After Waking Up and Executing Morning Preparations",
+    },
+    {
+        startHour: 8,
+        durationInHours:  5,
+        planningTextPassage: "Main Loop - Default Description - Planning to Attending School",
+        linkText: "Attend school.",
+        retrospectivePassageName: "Main Loop - Default Description - After Attending School",
+    },
+    {
+        startHour: 13,
+        durationInHours: 4,
+        planningTextPassage: "Main Loop - Default Description - Planning to Job Day",
+        linkText: "Go to work.",
+        retrospectivePassageName: "Main Loop - Default Description - After Job Day",
+    },
+    {
+        startHour: 17,
+        durationInHours: 2,
+        planningTextPassage: "Main Loop - Default Description - Planning to Going Home",
+        linkText: "Go home.",
+        retrospectivePassageName: "Main Loop - Default Description - After Going Home",
+    },
+    {
+        startHour: 19,
+        durationInHours: 2,
+        planningTextPassage: "Main Loop - Default Description - Planning to Doing Daily Duties",
+        linkText: "Do your daily duties.",
+        retrospectivePassageName: "Main Loop - Default Description - After Doing Daily Duties",
+    },
+    {
+        startHour: 22,
+        durationInHours: 8,
+        planningTextPassage: "Main Loop - Default Description - Planning to Going to Sleep",
+        linkText: "Go to sleep.",
+        retrospectivePassageName: "Main Loop - Default Description - After Going to Sleep",
+    },
+]
+
+window.initializeDayPlan = function(){
+    let dayPlan = new DayPlan()
+    State.variables.dayPlan = dayPlan
+    let activity = undefined
+    for (let dayPlanActivity of defaultDayPlan){
+        activity = new PlannedActivity(dayPlanActivity.startHour, dayPlanActivity.durationInHours, dayPlanActivity.planningTextPassage, dayPlanActivity.linkText, dayPlanActivity.retrospectivePassageName)
+        dayPlan.addPlannedActivity(activity)
+    }
+}
+
+Macro.add('showDaySchedule', {
+	tags     : null,
+	handler  : function () {
+        let output = ""
+        output += "<table>"
+        output += "<tr>Your plan for today is:</tr>"
+        let activitiesStartHours = State.variables.dayPlan.getActivitiesStartHourInOrderFromStartHour(State.variables.timeController.getCurrentHour())
+        for (let activityStartHour of activitiesStartHours){
+            let activity = State.variables.dayPlan.plannedActivitiesByStartHour.get(activityStartHour)
+            output += "<tr id=\"DayPlanTableRow\"><td>* At " + activity.startHour + ":00 - " + activity.linkText + "</td><td><<link \"Follow your schedule until " + activity.startHour + ":00\" \"Jump Schedule\">><<set $stopFollowingScheduleHour = " + activity.startHour + ">><</link>></td></tr>"
+        }
+        output += "</table>"
+		$(this.output).wiki(output);
+	}
+});
+
+::Schedule Control - Initialize
+<<nobr>>
+    <<run initializeDayPlan()>>
+    <<run $timeController.progressTime(0, 6)>>
+<</nobr>>\
+
+::Schedule Presentation
+<<showDaySchedule>><</showDaySchedule>>
+
+::Jump Schedule
+<<set _activitiesStartHours = $dayPlan.getActivitiesStartHourInOrderFromStartHour($timeController.getCurrentHour())>>\
+<<for _activityStartHour range _activitiesStartHours>>\
+    <<if _activityStartHour < $stopFollowingScheduleHour>>\
+        <<set _activity = $dayPlan.plannedActivitiesByStartHour.get(_activityStartHour)>>\
+        <<include _activity.retrospectivePassageName>><br>
+    <<else>>
+        <<break>>
+    <</if>>
+<</for>>\
+[[Continue.|Game - Main Loop][$timeController.getCurrentHour() = $stopFollowingScheduleHour]]
+
+
+::Main Loop - Default Description - Planning to Waking Up and Executing Morning Preparations
+Time to wake up and start your morning preparations.
+
+::Main Loop - Default Description - After Waking Up and Executing Morning Preparations
+You woke up after a well rested night.
+
+You had a quick breakfast, took a shower and got ready for a new day.
+
+::Main Loop - Default Description - Planning to Attending School
+Time to go to school.
+
+::Main Loop - Default Description - After Attending School
+You had another boring day at school, dutifully attending classes and focusing on the day's lessons.
+
+After that you had lunch and got ready for the afternoon.
+
+::Main Loop - Default Description - Planning to Job Day
+Time to go to your job.
+
+::Main Loop - Default Description - After Job Day
+You had another boring day at work, cleaning lab equipment, taking a few measurements and retrieving reagents from the stores.
+
+::Main Loop - Default Description - Planning to Going Home
+Time to go home.
+
+::Main Loop - Default Description - After Going Home
+You went home and had dinner. You are ready for the evening now.
+
+::Main Loop - Default Description - Planning to Doing Daily Duties
+Time to do your chores.
+
+::Main Loop - Default Description - After Doing Daily Duties
+You washed dishes, cleaned your room and did some other basic maintenance tasks around the house, just as you are supposed to.
+
+You also dutifully did your homework.
+
+::Main Loop - Default Description - Planning to Going to Sleep
+Time to go to sleep.
+
+::Main Loop - Default Description - After Going to Sleep
+You changed and got ready to bed. After a very short time you slipped into a world of ephemeral and barely remembered dreams.
