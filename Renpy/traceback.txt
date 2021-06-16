@@ -1,27 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "ErogeFrameworkTester/_Climax_Tester.rpy", line 6, in script
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
     python:
-  File "ErogeFrameworkTester/_Climax_Tester.rpy", line 7, in <module>
-    girl = cli.Girl_Simple_Simulation()
-TypeError: super() argument 1 must be type, not classobj
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
+    python:
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 17, in <module>
+    load_game_characters_locations() # Import from file "Town.jsonc"
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 15, in load_game_characters_locations
+    new_character = person.Minimal_Character().build_from_json(key, value)
+ValueError: list.remove(x): x not in list
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "ErogeFrameworkTester/_Climax_Tester.rpy", line 6, in script
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 515, in main
+    renpy.game.context().run(node)
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
+    python:
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
     python:
   File "renpy/ast.py", line 922, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "renpy/python.py", line 2218, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "ErogeFrameworkTester/_Climax_Tester.rpy", line 7, in <module>
-    girl = cli.Girl_Simple_Simulation()
-  File "_Climax_TesterPy.py", line 53, in __init__
-TypeError: super() argument 1 must be type, not classobj
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 17, in <module>
+    load_game_characters_locations() # Import from file "Town.jsonc"
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 15, in load_game_characters_locations
+    new_character = person.Minimal_Character().build_from_json(key, value)
+  File "PowerPlayFramework/Characters/PersonPy.py", line 68, in build_from_json
+  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 215, in build_from_json
+  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 150, in build
+  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 86, in consume_name
+ValueError: list.remove(x): x not in list
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 FreeCitiesSlaver 0.1
-Thu Jun  3 23:35:20 2021
+Wed Jun 16 01:43:24 2021

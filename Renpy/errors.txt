@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "ErogeFrameworkTester/_Climax_Tester.rpy", line 17: expected statement.
-    girl.stimulated = 888
-                    ^
+File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13: expected statement.
+    cc = fundamentals.characters_database["THE_MAYOR"]
+       ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Jun  3 18:23:14 2021
+Wed Jun 16 01:16:09 2021

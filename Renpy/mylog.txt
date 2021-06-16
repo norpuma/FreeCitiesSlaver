@@ -1,0 +1,11 @@
+---> [2021-06-15 21:33:53.717624] At this point, name is None
+---> [2021-06-15 21:35:05.224622] After pick_random_name(), name is Amanda
+---> [2021-06-15 21:35:05.238623] After pick_random_and_consume(), name is None
+---> [2021-06-15 21:35:05.256122] At this point, name is None
+---> [2021-06-15 21:37:18.192120] After pick_random_name(), name is Gina
+---> [2021-06-15 21:37:18.203121] In pick_random_and_consume(), still failing
+---> [2021-06-15 21:37:18.215122] After pick_random_and_consume(), name is None
+---> [2021-06-15 21:37:18.227124] At this point, name is None
+---> [2021-06-15 21:37:59.542122] After pick_random_name(), name is Ashley
+---> [2021-06-15 21:37:59.551624] After pick_random_and_consume(), name is Ashley
+---> [2021-06-15 21:37:59.561124] At this point, name is Ashley

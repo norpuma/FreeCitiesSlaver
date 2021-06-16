@@ -48,7 +48,8 @@ label start:
     $ renpy.call(game_prefix + "Game__Presentation") # What is the game about?
     $ renpy.call(game_prefix + "Game__Setup__Choices") # What decisions the player needs to make before starting the game? This is often using to set traits for the protagonist.
     $ renpy.call(game_prefix + "Game__Introduction") # Non-playable first scenes to the game
-    jump Climax_Tester_Start
+    # jump Climax_Tester_Start
+    jump TownExplorer_Tester_Start
     jump Game__Main_Loop__Prompt
     return
 

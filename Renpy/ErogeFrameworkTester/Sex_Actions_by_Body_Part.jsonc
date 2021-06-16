@@ -1,0 +1,623 @@
+{
+    "free up": {
+        "right hand": {
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor == target",
+                        "actor.body_parts.get_availability_status('RIGHT_HAND') == 'ACTIVE'"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "actor.body_parts.make_available('RIGHT_HAND', 'AVAILABLE')"
+                    ]
+                }
+            ]
+        },
+        "left hand": {
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor == target",
+                        "actor.body_parts.get_availability_status('LEFT_HAND') == 'ACTIVE'"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "actor.body_parts.make_available('LEFT_HAND', 'AVAILABLE')"
+                    ]
+                }
+            ]
+        }
+    },
+    "face": {
+        "caress with right hand": {
+            "verb_id": "CARESS",
+            "actor_verb": "caress",
+            "actor_used_body_part_id": "RIGHT_HAND",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "target.upset > 0"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset -= 1"
+                    ]
+                }
+            ]
+        },
+        "caress with left hand": {
+            "verb_id": "CARESS",
+            "actor_verb": "caress",
+            "actor_used_body_part_id": "RIGHT_HAND",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "target.upset > 0"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset -= 1"
+                    ]
+                }
+            ]
+        },
+        "slap with right hand": {
+            "verb_id": "SLAP",
+            "actor_verb": "slap",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "slapping",
+            "target_verb_passive_present_continuous": "is being slapped",
+            "actor_used_body_part_id": "RIGHT_HAND",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0.5",
+                        "target.upset += 1"
+                    ]
+                }
+            ]
+        },
+        "slap with left hand": {
+            "verb_id": "SLAP",
+            "actor_verb": "slap",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "slapping",
+            "target_verb_passive_present_continuous": "is being slapped",
+            "actor_used_body_part_id": "LEFT_HAND",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0.5",
+                        "target.upset += 1"
+                    ]
+                }
+            ]
+        },
+        "slap with penis": {
+            "verb_id": "SLAP",
+            "actor_verb": "slap",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "slapping",
+            "target_verb_passive_present_continuous": "is being slapped",
+            "actor_used_body_part_id": "PENIS_SHAFT",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor != target"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0.5",
+                        "target.upset += 1"
+                    ]
+                }
+            ]
+        },
+        "kiss": {
+            "verb_id": "KISS",
+            "actor_verb": "kiss",
+            "actor_used_body_part_id": "MOUTH",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "target.upset > 0",
+                        "actor != target"
+                    ],
+                    "effect": [
+                        "target.upset -= 1",
+                        "actor.energy -= 0",
+                        "actor.arousal -= 0.5",
+                        "target.arousal -= 0.5"
+                    ]
+                }
+            ]
+        },
+        "climax on face with penis": {
+            "verb_id": "CLIMAX",
+            "actor_verb": "climax on face",
+            "actor_used_body_part_id": "PENIS_HEAD",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.stimulus >= actor.stimulus_threshold"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 1"
+                    ]
+                }
+            ]
+        },
+        "climax on face with pussy": {
+            "verb_id": "CLIMAX",
+            "actor_verb": "climax on face",
+            "actor_used_body_part_id": "LABIA",
+            "target_used_body_part_id": "FACE",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.stimulus >= actor.stimulus_threshold"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 0.5"
+                    ]
+                }
+            ]
+        }
+    },
+    "mouth": {
+        "kiss": {
+            "verb_id": "KISS",
+            "actor_verb": "kiss",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "kissing",
+            "target_verb_passive_present_continuous": "is being kissed",
+            "actor_used_body_part_id": "MOUTH",
+            "target_used_body_part_id": "MOUTH",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0.5",
+                        "target.upset += 1"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 0",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 0",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0.5",
+                        "target.arousal += 0.5",
+                        "actor.arousal += 0.5"
+                    ]
+                }
+            ]
+        },
+        // "penetrate with finger": {
+        //     "effects_by_requirement": [
+        //         {
+        //             "requirements": [
+        //                 "target.arousal >= -1000"
+        //             ],
+        //             "effect": [
+        //                 "actor.energy -= 0.5",
+        //                 "target.upset += 1"
+        //             ]
+        //         },
+        //         {
+        //             "requirements": [
+        //                 "target.arousal >= 1"
+        //             ],
+        //             "effect": [
+        //                 "actor.energy -= 0.5",
+        //                 "target.upset += 1"
+        //             ]
+        //         }
+        //     ]
+        // },
+        "penetrate mouth with penis": {
+            "verb_id": "PENETRATE",
+            "actor_verb": "penetrate",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "penetrating",
+            "target_verb_passive_present_continuous": "is being penetrated",
+            "actor_used_body_part_id": "PENIS_HEAD",
+            "target_used_body_part_id": "MOUTH",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.arousal >= 2"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 3"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 4"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 4",
+                        "actor.arousal >= 2",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "actor.arousal += 0.5"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 2",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 2"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.arousal += 0.5"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 2",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 2",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.arousal += 0.5",
+                        "actor.arousal += 0.5"
+                    ]
+                }
+            ]
+        },
+
+
+
+
+        "penetrate with penis": {
+            "verb_id": "PENETRATE",
+            "actor_verb": "penetrate",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "penetrating",
+            "target_verb_passive_present_continuous": "is being penetrated",
+            "actor_used_body_part_id": "PENIS_HEAD",
+            "target_used_body_part_id": "LABIA",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.arousal >= 2"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 2"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 4",
+                        "actor.arousal >= 4"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 4",
+                        "actor.arousal >= 2",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "actor.arousal += 0.5"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 2",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 2"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.arousal += 0.5"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 2",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 2",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.arousal += 0.5",
+                        "actor.arousal += 0.5"
+                    ]
+                }
+            ]
+        },
+        "hump with labia": {
+            "verb_id": "RUB",
+            "actor_verb": "hump",
+            "is_continuous": "True",
+            "actor_verb_present_continuous": "humping",
+            "target_verb_passive_present_continuous": "is being humped",
+            "actor_used_body_part_id": "LABIA",
+            "target_used_body_part_id": "PENIS_SHAFT",
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.arousal >= 2"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 1"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 4",
+                        "actor.arousal >= 4"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 4",
+                        "actor.arousal >= 2",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "actor.arousal += 0.5"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 2",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 2"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.arousal += 0.5"
+                    ]
+                },
+                {
+                    "requirements": [
+                        "target.arousal >= 2",
+                        "target.arousal <= 3",
+                        "actor.arousal >= 2",
+                        "actor.arousal <= 3"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.arousal += 0.5",
+                        "actor.arousal += 0.5"
+                    ]
+                }
+            ]
+        },
+        "hump with clit": {
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.stimulus >= actor.stimulus_threshold"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 1"
+                    ]
+                }
+            ]
+        },
+        "climax target": {
+            "effects_by_requirement": [
+                {
+                    "requirements": [
+                        "target.arousal >= -1000",
+                        "actor.stimulus >= actor.stimulus_threshold"
+                    ],
+                    "effect": [
+                        "actor.energy -= 0",
+                        "target.upset += 1"
+                    ]
+                }
+            ]
+        }
+    },
+    "throat": {
+        "kiss": {},
+        "fuck with penis": {},
+        "fuck with fingers": {}
+    },
+    "hands": {
+        "restrain with hand": {},
+        "rub with breasts": {},
+        "rub with buttocks": {},
+        "rub with abdomen": {},
+        "rub with face": {},
+        "hump with labia": {},
+        "hump with clit": {},
+        "hump with penis": {},
+        "slap with face": {},
+        "slap with buttocks": {}
+    },
+    "breasts": {
+        "caress with hand": {},
+        "massage with hands": {},
+        "rub with face": {},
+        "rub with penis": {},
+        "slap with hand": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "squeeze roughly with hand": {}
+    },
+    "nipples": {
+        "caress with hand": {},
+        "pinch with fingers": {},
+        "lick with tongue": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "suck with mouth": {}
+    },
+    "abdomen": {
+        "caress with hand": {}
+    },
+    "legs/thighs": {
+        "caress with hand": {},
+        "slap with hand": {},
+        "hump with penis": {},
+        "hump with labia": {},
+        "hump with clit": {}
+    },
+    "feet": {
+        "kiss": {},
+        "hump with penis": {},
+        "hump with labia": {},
+        "hump with clit": {}
+    },
+    "buttocks": {
+        "kiss": {},
+        "caress with hand": {},
+        "massage with hands": {},
+        "slap with hand": {},
+        "rub with penis": {},
+        "squeeze roughly with hand": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "pinch with fingers": {}
+    },
+    "labia": {
+        "kiss": {},
+        "lick": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "caress with hand": {},
+        "rub with finger": {},
+        "rub with penis": {},
+        "hump with penis": {},
+        "penetrate with finger": {},
+        "penetrate with penis": {},
+        "hump with thigh": {},
+        "hump with foot": {},
+        "hump with labia": {},
+        "slap with hand": {},
+        "hump with mouth": {}
+    },
+    "clit": {
+        "lick": {},
+        "suck": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "caress with hand": {},
+        "rub with finger": {},
+        "rub with penis": {},
+        "hump with thigh": {},
+        "hump with foot": {},
+        "penetrate with finger": {},
+        "penetrate with penis": {},
+        "slap with hand": {}
+    },
+    "vagina": {
+        "softly fuck with penis": {},
+        "roughly fuck with penis": {},
+        "softly fuck with fingers": {},
+        "roughly fuck with fingers": {}
+    },
+    "penis shaft": {
+        "lick": {},
+        "caress with hand": {},
+        "slap with hand": {},
+        "slap with face": {},
+        "ride with mouth": {},
+        "ride with vagina": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "squeeze with vagina": {}
+    },
+    "penis head": {
+        "kiss": {},
+        "lick": {},
+        "caress with hand": {},
+        "slap with hand": {},
+        "slap with face": {},
+        "ride with mouth": {},
+        "ride with vagina": {},
+        "bite softly": {},
+        "bite roughly": {},
+        "hump with hand": {},
+        "hump with labia": {}
+    },
+    "penis base": {
+        "lick": {},
+        "caress with hand": {},
+        "hump with hand": {},
+        "ride with mouth": {},
+        "ride with vagina": {},
+        "squeeze with vagina": {}
+    },
+    "scrotum": {
+        "lick": {},
+        "suck": {},
+        "massage": {},
+        "squeeze softly": {},
+        "squeeze roughly": {}
+    },
+    "anus": {
+        "caress with finger": {},
+        "lick": {},
+        "penetrate with finger": {},
+        "penetrate with penis": {}
+    },
+    "rectum": {
+        "softly fuck with penis": {},
+        "roughly fuck with penis": {},
+        "softly fuck with finger": {},
+        "roughly fuck with finger": {}
+    }
+}

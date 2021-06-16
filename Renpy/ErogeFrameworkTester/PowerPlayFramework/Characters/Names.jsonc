@@ -1,0 +1,828 @@
+{
+    "lastNames": {
+        "Akron": "Akron",
+        "Arcturus": "Arcturus",
+        "Black": "Black",
+        "Bloom": "Bloom",
+        "Brenton": "Brenton",
+        "Carver": "Carver",
+        "Castelli": "Castelli",
+        "Chatnam": "Chatnam",
+        "Cherish": "Cherish",
+        "Clearing": "Clearing",
+        "Collins": "Collins",
+        "Cranston": "Cranston",
+        "Crawley": "Crawley",
+        "Donner": "Donner",
+        "Dubois": "Dubois",
+        "Emerson": "Emerson",
+        "Foster": "Foster",
+        "Fust": "Fust",
+        "Green": "Green",
+        "Greenland": "Greenland",
+        "Griffin": "Griffin",
+        "Harris": "Harris",
+        "Hauser": "Hauser",
+        "Island": "Island",
+        "Kern": "Kern",
+        "Koch": "Koch",
+        "Leighton": "Leighton",
+        "Masters": "Masters",
+        "Michaels": "Michaels",
+        "Miller": "Miller",
+        "Nabakova": "Nabakova",
+        "Norris": "Norris",
+        "Novak": "Novak",
+        "Oslo": "Oslo",
+        "Perkins": "Perkins",
+        "Platter": "Platter",
+        "Rosen": "Rosen",
+        "Richards": "Richards",
+        "Schwarz": "Schwarz",
+        "Smith": "Smith",
+        "Sommers": "Sommers",
+        "Sussman": "Sussman",
+        "Templeton": "Templeton",
+        "Tennison": "Tennison",
+        "Thompson": "Thompson",
+        "Trent": "Trent",
+        "Vance": "Vance",
+        "Vennman": "Vennman",
+        "Wallace": "Wallace",
+        "Walker": "Walker",
+        "Warren": "Warren"
+    },
+    "femaleNameDatabase": {
+        "Adria": {
+            "possessive": "Adria's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Dri"],
+            "linkedFirstNames": ["Adriana"]
+        },
+        "Adriana": {
+            "possessive": "Adriana's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Adria", "Dee", "Dri"],
+            "linkedFirstNames": []
+        },
+        "Al": {
+            "possessive": "Al's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alessandra", "Alexa", "Allie"]
+        },
+        "Alessa": {
+            "possessive": "Alessa's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Al", "Allie", "Lessa"],
+            "linkedFirstNames": ["Alessandra"]
+        },
+        "Alessandra": {
+            "possessive": "Alessandra's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Al", "Alessa", "Allie", "Lessa", "Sandie", "Sandra"],
+            "linkedFirstNames": []
+        },
+        "Alexa": {
+            "possessive": "Alexa's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Allie", "Lexa", "Lexie"],
+            "linkedFirstNames": ["Alexandra"]
+        },
+        "Allie": {
+            "possessive": "Allie's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Al"],
+            "linkedFirstNames": ["Alessandra", "Alexa", "Alexandra"]
+        },
+        "Amanda": {
+            "possessive": "Amanda's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Ames", "Amy", "Mandy"],
+            "linkedFirstNames": []
+        },
+        "Ames": {
+            "possessive": "Ames'",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Amanda"]
+        },
+        "Amy": {
+            "possessive": "Amy's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Amanda"]
+        },
+        "Andie": {
+            "possessive": "Andie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Andrea"]
+        },
+        "Andrea": {
+            "possessive": "Andrea's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Andie", "Drea"],
+            "linkedFirstNames": []
+        },
+        "Angelica": {
+            "possessive": "Angelica's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Angie"],
+            "linkedFirstNames": []
+        },
+        "Angelina": {
+            "possessive": "Angelina's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Angie", "Gina", "Lina"],
+            "linkedFirstNames": []
+        },
+        "Angie": {
+            "possessive": "Angie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Angelica", "Angelina"]
+        },
+        "Ann": {
+            "possessive": "Ann's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Annie"],
+            "linkedFirstNames": ["Anna", "Anne"]
+        },
+        "Anna": {
+            "possessive": "Anna's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Ann", "Annie"],
+            "linkedFirstNames": []
+        },
+        "Anne": {
+            "possessive": "Anne's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Annie"],
+            "linkedFirstNames": []
+        },
+        "Annie": {
+            "possessive": "Annie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Anna", "Anne"]
+        },
+        "Ari": {
+            "possessive": "Ari's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Ariana"]
+        },
+        "Ariana": {
+            "possessive": "Ariana's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Ari", "Riana"]
+        },
+        "Ash": {
+            "possessive": "Ash's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Ashley"]
+        },
+        "Ashley": {
+            "possessive": "Ashley's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Ash"]
+        },
+        "Beth": {
+            "possessive": "Beth's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Bettie"],
+            "linkedFirstNames": ["Bethany", "Elizabeth"]
+        },
+        "Bethany": {
+            "possessive": "Bethany's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Beth", "Bettie"],
+            "linkedFirstNames": []
+        },
+        "Bettie": {
+            "possessive": "Bettie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Bethany", "Elizabeth"]
+        },
+        "Camila": {
+            "possessive": "Camila's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Cammie", "Mila"],
+            "linkedFirstNames": []
+        },
+        "Cammie": {
+            "possessive": "Cammie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Camila"]
+        },
+        "Carla": {
+            "possessive": "Carla's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Carlie"],
+            "linkedFirstNames": []
+        },
+        "Carlie": {
+            "possessive": "Charlie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Carla"]
+        },
+        "Charlotte": {
+            "possessive": "Charlotte's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Charlie", "Lottie"]
+        },
+        "Charlie": {
+            "possessive": "Charlie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Charlotte"]
+        },
+        "Dee": {
+            "possessive": "Dee's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Adriana"]
+        },
+        "Drea": {
+            "possessive": "Drea's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Andrea"]
+        },
+        "Dri": {
+            "possessive": "Dri's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Adriana"]
+        },
+        "Eliza": {
+            "possessive": "Eliza's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Liza"],
+            "linkedFirstNames": ["Elizabeth"]
+        },
+        "Elizabeth": {
+            "possessive": "Elizabeth's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Beth", "Bettie", "Libbie", "Liza"]
+        },
+        "Georgia": {
+            "possessive": "Georgia's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Georgie", "Gia", "Gigi"],
+            "linkedFirstNames": []
+        },
+        "Georgie": {
+            "possessive": "Georgie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Georgia"]
+        },
+        "Gia": {
+            "possessive": "Gia's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Georgia"]
+        },
+        "Gigi": {
+            "possessive": "Gigi's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Georgia"]
+        },
+        "Gina": {
+            "possessive": "Gina's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Angelina"]
+        },
+        "Lessa": {
+            "possessive": "Lessa's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alessandra"]
+        },
+        "Lexa": {
+            "possessive": "Lexa's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alexa", "Alexandra"]
+        },
+        "Lexie": {
+            "possessive": "Lexie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alexa", "Alexandra"]
+        },
+        "Libbie": {
+            "possessive": "Libbie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Elizabeth", "Liberty"]
+        },
+        "Liberty": {
+            "possessive": "Liberty's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Libbie"],
+            "linkedFirstNames": []
+        },
+        "Lina": {
+            "possessive": "Lina's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Angelina"]
+        },
+        "Liza": {
+            "possessive": "Liza's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Eliza", "Elizabeth"]
+        },
+        "Lottie": {
+            "possessive": "Lottie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Charlotte"]
+        },
+        "Mandy": {
+            "possessive": "Mandy's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Amanda"]
+        },
+        "Mila": {
+            "possessive": "Mila's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Camila"]
+        },
+        "Riana": {
+            "possessive": "Riana's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Ariana"]
+        },
+        "Sandie": {
+            "possessive": "Sandie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alessandra", "Sandra"]
+        },
+        "Sandra": {
+            "possessive": "Sandra's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": ["Sandie"],
+            "linkedFirstNames": ["Alessandra"]
+        },
+        "Tori": {
+            "possessive": "Tori's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedLastNames": [],
+            "linkedFirstNames": ["Victoria"]
+        },
+        "Vicky": {
+            "possessive": "Vicky's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedLastNames": [],
+            "linkedFirstNames": ["Victoria"]
+        },
+        "Victoria": {
+            "possessive": "Victoria's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedLastNames": ["Tori", "Vicky"],
+            "linkedFirstNames": []
+        }
+    },
+    "maleNameDatabase": {
+        "Abe": {
+            "possessive": "Abe's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Abraham"]
+        },
+        "Abraham": {
+            "possessive": "Abraham's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Abe"]
+        },
+        "Al": {
+            "possessive": "Al's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alan", "Albert", "Alberto"]
+        },
+        "Alan": {
+            "possessive": "Alan's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Al"],
+            "linkedFirstNames": []
+        },
+        "Albert": {
+            "possessive": "Albert's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Al", "Bert"],
+            "linkedFirstNames": []
+        },
+        "Alberto": {
+            "possessive": "Alberto's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Al", "Beto"],
+            "linkedFirstNames": []
+        },
+        "Alec": {
+            "possessive": "Alec's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Alonso": {
+            "possessive": "Alonso's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "August": {
+            "possessive": "August's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Augie"],
+            "linkedFirstNames": []
+        },
+        "Benedict": {
+            "possessive": "Benedict's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Benny"],
+            "linkedFirstNames": []
+        },
+        "Benny": {
+            "possessive": "Benny's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Benedict"]
+        },
+        "Bert": {
+            "possessive": "Bert's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Albert"]
+        },
+        "Beto": {
+            "possessive": "Beto's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Alberto", "Roberto"]
+        },
+        "Boris": {
+            "possessive": "Boris'",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Brad": {
+            "possessive": "Brad's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Bradley"]
+        },
+        "Bradley": {
+            "possessive": "Bradley's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Brad"],
+            "linkedFirstNames": []
+        },
+        "Brian": {
+            "possessive": "Brian's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Carl": {
+            "possessive": "Carl's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Carlos": {
+            "possessive": "Carlos'",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Conrad": {
+            "possessive": "Conrad's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Chris": {
+            "possessive": "Chris'",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Christian"]
+        },
+        "Christian": {
+            "possessive": "Christian's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Chris"],
+            "linkedFirstNames": []
+        },
+        "Dan": {
+            "possessive": "Dan's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Daniel"]
+        },
+        "Daniel": {
+            "possessive": "Daniel's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Dan"],
+            "linkedFirstNames": []
+        },
+        "Danny": {
+            "possessive": "Danny's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Daniel"]
+        },
+        "Dave": {
+            "possessive": "Dave's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["David"]
+        },
+        "David": {
+            "possessive": "David's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Dave"],
+            "linkedFirstNames": []
+        },
+        "Dean": {
+            "possessive": "Dean's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Devin": {
+            "possessive": "Devin's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        },
+        "Doug": {
+            "possessive": "Doug's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Douglas"]
+        },
+        "Douglas": {
+            "possessive": "Douglas'",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Doug"],
+            "linkedFirstNames": []
+        },
+        "Ed": {
+            "possessive": "Ed's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Edward"]
+        },
+        "Eddy": {
+            "possessive": "Eddy's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Edward"]
+        },
+        "Edward": {
+            "possessive": "Edward's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Ed", "Eddy", "Ned"],
+            "linkedFirstNames": []
+        },
+        "Enrique": {
+            "possessive": "Enrique's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Rick"],
+            "linkedFirstNames": []
+        },
+        "Ernest": {
+            "possessive": "Ernest's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Ernie"],
+            "linkedFirstNames": []
+        },
+        "Ernie": {
+            "possessive": "Ernie's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Ernest"]
+        },
+        "Finn": {
+            "possessive": "Finn's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Finnegan"]
+        },
+        "Finnegan": {
+            "possessive": "Finnegan's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Finn"],
+            "linkedFirstNames": []
+        },
+        "Francis": {
+            "possessive": "Francis'",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Frank"],
+            "linkedFirstNames": []
+        },
+        "Frank": {
+            "possessive": "Frank's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Francis", "Franklin"]
+        },
+        "Franklin": {
+            "possessive": "Franklin's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Frank"],
+            "linkedFirstNames": []
+        },
+        "Fred": {
+            "possessive": "Fred's",
+            "canBeFirstName": true,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Frederic"]
+        },
+        "Freddy": {
+            "possessive": "Freddy's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Frederic"]
+        },
+        "Frederic": {
+            "possessive": "Frederic's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Fred", "Freddy"],
+            "linkedFirstNames": []
+        },
+        "Ned": {
+            "possessive": "Ned's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Edward"]
+        },
+        "Rick": {
+            "possessive": "Rick's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Enrique"]
+        },
+        "Roberto": {
+            "possessive": "Roberto's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Beto"],
+            "linkedFirstNames": []
+        },
+        "Vic": {
+            "possessive": "Vic's",
+            "canBeFirstName": false,
+            "canBeNickname": true,
+            "linkedNicknames": [],
+            "linkedFirstNames": ["Victor"]
+        },
+        "Victor": {
+            "possessive": "Victor's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": ["Vic"],
+            "linkedFirstNames": []
+        }
+    },
+    "Character_Names_Template": {
+        "standard": "The name by which the character is known. This should be unique within the game.",
+        "standard_possessive": "The possessive form of the standard name. e.g.: For a standard of Gia, the possessive would be Gia's.",
+        "first": "The character's formal first name. If the character has a nickname, this is the name. e.g.: For a standard of Gia, the first would be Georgia.",
+        "first_possessive": "The possessive form of the first name. e.g.: For a first name of Georgia, the possessive would be Georgia's.",
+        "last": "The character's last name. e.g.: Wellignton.",
+        "last_possessive": "The possessive form of the last name. e.g.: For a last name of Georgia, the possessive would be Wellignton's.",
+        "affectionate_names": "A list of affectionate names some character uses for this character. e.g.: honey, hun, sweetie, sugar, darling, dear, baby, sweetheart, lover, doll, babe, lover-boy, my love, cutie, beautiful, kid, kiddo, girlie, sweetness, princess.",
+        "private_names": "A list of names some character uses for this character, but only in private. e.g.: Little Slut or Honey Bear.",
+        "offensive_names": "A list of affectionate names for this character. e.g.: dirtbag, asswipe, motherfucker, scum, degenerate, pig, pervert, bitch, cunt.",
+        "respectful_names": "A list of names some character uses for this character to show respect. e.g.: sir, master, madam",
+        "superior_names": "A list of names some character uses for this character when they seem them as superior. e.g.: master, boss, goddess, my queen, princess"
+    }
+}
