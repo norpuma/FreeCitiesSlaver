@@ -12,12 +12,13 @@ init 150:
                 json_object = json.load(json_file)
                 json_file.close()
                 for key, value in json_object.items():
-                    new_character = person.Minimal_Character().build_from_json(key, value)
+                    new_character = person.Developed_Character().build_from_json(key, value)
             
         load_game_characters_locations() # Import from file "Town.jsonc"
 
-        someone = person.Minimal_Character().build(None, names_system.Character_Names.generate_random(fundamentals.Gender.FEMALE), fundamentals.Gender.FEMALE, 19)
+        someone = person.Developed_Character().build(None, names_system.Character_Names.generate_random(fundamentals.Gender.FEMALE), fundamentals.Gender.FEMALE, 19)
         someone.location = town
-        someone_else = person.Minimal_Character().build(None, names_system.Character_Names.generate_random(fundamentals.Gender.MALE), fundamentals.Gender.MALE, 22)
+        someone_else = person.Developed_Character().build(None, names_system.Character_Names.generate_random(fundamentals.Gender.MALE), fundamentals.Gender.MALE, 22)
         someone_else.location = town
         fundamentals.characters_database["THE_MAYOR"].location = town
+

@@ -1,6 +1,3 @@
-init python:
-    import _PersonInteractions_TesterPy as pi
-
 label PersonInteractions_Tester_Start:
     $ pov = pi.POV_Character()
     jump PersonInteractions_Tester_Loop

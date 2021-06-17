@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13: expected statement.
-    cc = fundamentals.characters_database["THE_MAYOR"]
-       ^
+File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 2: invalid syntax
+    import .PowerPlayFramework.System.Time_ControlPy as time_control
+            ^
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Wed Jun 16 01:16:09 2021
+Thu Jun 17 01:28:20 2021

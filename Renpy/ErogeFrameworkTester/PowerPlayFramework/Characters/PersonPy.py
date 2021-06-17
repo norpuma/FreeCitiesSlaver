@@ -1,5 +1,6 @@
 import Character_FundamentalsPy as fundamentals
 from .Character_NamesPy import Character_Names
+from .Status.MoodPy import Character_Mood
 import renpy.exports as renpy
 
 def register_character(character):
@@ -44,7 +45,8 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
         if self._location != None and self in self._location.characters:
             self._location.characters.remove(self)
         self._location = val
-        val.characters.append(self)
+        if val != None:
+            val.characters.append(self)
     
     @property
     def pronouns(self):
@@ -84,9 +86,26 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
         
         return self
 
+class Developed_Character(Minimal_Character):
+    def __init__(self):
+        super(Developed_Character, self).__init__()
+        self._reset()
+    
+    def _reset(self):
+        self.mood = Character_Mood()
+        self.relationships = {}
 
+    def add_relationship(self, relationship):
+        self.relationships[relationship.target] = relationship
 
+    def build(self, id, names, gender, age):
+        self.reset()
+        super(Developed_Character, self).build(id, names, gender, age)
+        return self
 
+    def build_from_json(self, id, json):
+        super(Developed_Character, self).build_from_json(id, json)
+        return self
 
 # class Person(Minimal_Character): #Everything that needs to be known about a person.
 #     def __init__(self):

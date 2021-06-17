@@ -14,3 +14,20 @@ ENUM__TIME_CONTROL__WEEK_DAY__WEDNESDAY__INDEX = 3
 ENUM__TIME_CONTROL__WEEK_DAY__THURSDAY__INDEX = 4
 ENUM__TIME_CONTROL__WEEK_DAY__FRIDAY__INDEX = 5
 ENUM__TIME_CONTROL__WEEK_DAY__SATURDAY__INDEX = 6
+
+from datetime import datetime
+
+class Time_Control(object):
+    def __init__(self):
+        self._reset()
+    
+    def _reset(self):
+        self.date_time = None
+    
+    def build(self, start_year, start_month = 1, start_day = 1, start_hour = 7, start_minutes = 0):
+        self._reset()
+        self.date_time = datetime(start_year, start_month, start_day, start_hour, start_minutes)
+        return self
+    
+    def get_timestamp(self):
+        return self.date_time

@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
-    python:
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
-    python:
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 17, in <module>
-    load_game_characters_locations() # Import from file "Town.jsonc"
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 15, in load_game_characters_locations
-    new_character = person.Minimal_Character().build_from_json(key, value)
-ValueError: list.remove(x): x not in list
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
+    call Initialize__Protagonist
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
+    "HERE"
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
+    call Initialize__Protagonist
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
+    "HERE"
+AttributeError: 'NoneType' object has no attribute 'set_transition'
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -18,25 +18,19 @@ Full traceback:
     renpy.main.main()
   File "renpy/main.py", line 515, in main
     renpy.game.context().run(node)
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
-    python:
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 2, in script
-    python:
-  File "renpy/ast.py", line 922, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2218, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 17, in <module>
-    load_game_characters_locations() # Import from file "Town.jsonc"
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 15, in load_game_characters_locations
-    new_character = person.Minimal_Character().build_from_json(key, value)
-  File "PowerPlayFramework/Characters/PersonPy.py", line 68, in build_from_json
-  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 215, in build_from_json
-  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 150, in build
-  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 86, in consume_name
-ValueError: list.remove(x): x not in list
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
+    call Initialize__Protagonist
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
+    "HERE"
+  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
+    call Initialize__Protagonist
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
+    "HERE"
+  File "renpy/ast.py", line 714, in execute
+    say_menu_with(self.with_, renpy.game.interface.set_transition)
+AttributeError: 'NoneType' object has no attribute 'set_transition'
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 FreeCitiesSlaver 0.1
-Wed Jun 16 01:43:24 2021
+Thu Jun 17 01:55:38 2021

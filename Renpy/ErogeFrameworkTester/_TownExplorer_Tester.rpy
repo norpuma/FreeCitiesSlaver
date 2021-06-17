@@ -1,12 +1,11 @@
-init python:
-    import _TownExplorer_TesterPy as te
+init 150 python:
+    import PowerPlayFramework.Systems.Time_ControlPy as time_control
 
 label TownExplorer_Tester_Start:
-    $ pov = te.POV_Character()
-    if pov.location != None:
-        $ current_location = pov.location
-    else:
-        $ current_location = town
+    call Initialize__Protagonist
+    $ time_control.time_control = time_control.Time_Control().build(2020)
+    $ pov = protagonist
+    $ current_location = pov.location
     jump TownExplorer_Tester_Loop
 
 label TownExplorer_Tester_Loop:
@@ -48,7 +47,8 @@ label TownExplorer_Character_Selector:
     python:
         entries = []
         for char in current_location.characters:
-            entries.append(("{0} {1}".format(char.names.standard, char.names.last), char))
+            if char.id != protagonist.id:
+                entries.append(("{0} {1}".format(char.names.standard, char.names.last), char))
     $ selection = renpy.display_menu(entries)
     $ target = selection
     jump TownExplorer_Character_Interaction_Selector
@@ -61,5 +61,6 @@ label TownExplorer_Character_Interaction_Selector:
     $ selection = renpy.display_menu(entries)
     if selection == "DONE":
         jump TownExplorer_Location_Actions_Selector
+    $ start_interaction(protagonist, target)
     $ renpy.call(selection)
     jump TownExplorer_Character_Interaction_Selector
