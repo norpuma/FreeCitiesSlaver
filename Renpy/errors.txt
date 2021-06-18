@@ -2,10 +2,13 @@
 errors listed below, and try again.
 
 
-File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 2: invalid syntax
-    import .PowerPlayFramework.System.Time_ControlPy as time_control
-            ^
-    
+File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 25: expected statement.
+    elif target.status.mood.happiness > 2:
+               ^
+
+File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 27: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Jun 17 01:28:20 2021
+Thu Jun 17 22:23:09 2021

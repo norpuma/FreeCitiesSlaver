@@ -1,5 +1,6 @@
 init 150 python:
     import PowerPlayFramework.Systems.Time_ControlPy as time_control
+    import random
 
 label TownExplorer_Tester_Start:
     call Initialize__Protagonist
@@ -51,16 +52,18 @@ label TownExplorer_Character_Selector:
                 entries.append(("{0} {1}".format(char.names.standard, char.names.last), char))
     $ selection = renpy.display_menu(entries)
     $ target = selection
+    $ start_interaction(protagonist, target)
     jump TownExplorer_Character_Interaction_Selector
     return
 
 label TownExplorer_Character_Interaction_Selector:
     $ msg = "How do you want to interact with '{0} {1}'?".format(target.names.standard, target.names.last)
     "{color=#ff7f50}[msg]{/color}"
-    $ entries = build_player_interactions_with_characters_list()
+    $ actor = protagonist
+    $ entries = build_player_interactions_with_characters_list(protagonist, target)
     $ selection = renpy.display_menu(entries)
     if selection == "DONE":
+        $ end_interaction()
         jump TownExplorer_Location_Actions_Selector
-    $ start_interaction(protagonist, target)
     $ renpy.call(selection)
     jump TownExplorer_Character_Interaction_Selector

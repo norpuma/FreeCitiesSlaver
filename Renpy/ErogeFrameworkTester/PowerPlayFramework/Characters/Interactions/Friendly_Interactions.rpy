@@ -1,18 +1,63 @@
+label Characters__Interactions__Introductions__Polite:
+    if target.status.mood.calm <= -2:
+        $ msg = "{0} seems too angry to approach. You should probably try again at another time.".format(target.pronouns["subject"].capitalize())
+        "[msg]"
+        return
+
+    $ greeting = random.choice(["Hello!", "Hi!", "Hey!"])
+    $ polite_introduction = " My name is {0} {1}, {2}. It's nice to meet you!".format(actor.names.first, actor.names.last, actor.names.standard)
+    $ name_request = random.choice(["May i know your name?", "What is your name?", ""])
+    $ msg = protagonist.format_say(greeting + polite_introduction, "You say, with a smile.", name_request)
+    "[msg]"
+    $ target_sentiments = target.relationships[actor.id].sentiments
+    $ introduction = "My name is {0} {1}, people call me {2}.".format(target.names.first, target.names.last, target.names.standard)
+    if target.status.mood.happiness <= -2:
+        $ greeting = random.choice(["Hello!", "Hi!", "Hey!"])
+        $ msg = target.format_say(greeting, "{0} greets you, morosely. Something seems to be upsetting, {1}.".format(target.pronouns["subject"].capitalize(), target.pronouns["object"]), "It's...", "{0} lets out a heavy sigh.".format(target.pronouns["subject"]), "It's nice ot meet you. " + introduction)
+    elif target.status.mood.happiness > 2:
+        $ greeting = random.choice(["Hello!", "Hi!", "Hey!"])
+        $ msg = target.format_say(greeting, "{0} greets you, with a big smile.".format(target.pronouns["subject"].capitalize()), "It's a pleasure to meet you! " + introduction)
+    else:
+        $ greeting = random.choice(["Hello!", "Hi!", "Hey!"])
+        $ msg = target.format_say(greeting + " " + random.choice(["Nice to meet you too!", "I'm glad to meet you too!", "Nice to meet you! I like your name."]) + " " + introduction)
+    "[msg]"
+    $ current_interaction.greeting_happened = True
+    $ target.relationships[actor.id].apply("RECEIVE_POLITE_INTRODUCTION")
+    $ actor.relationships[target.id].apply("ACT_POLITE_INTRODUCTION")
+    return
+
+label Characters__Interactions__Friendly__Greet:
+    $ action_description = "You offer {0} a friendly greeting.".format(target.names.standard)
+    # TODO: Build target's reaction from their feelings.
+    $ target_sentiments = target.relationships[actor.id].sentiments
+    if target_sentiments.satisfaction < 0:
+        $ reaction_description = "{0} doesn't greet you back, just giving you the cold shoulder. {1} seems upset with you.".format(target.names.standard, target.pronouns["subject"].capitalize())
+    elif target.status.mood.calm < -1 and target_sentiments.love < (-1 * target.status.mood.calm):
+        $ reaction_description = "{0} almost snarls at you when she hears your greeting. {1} seems pretty angry, although not with you.".format(target.names.standard, target.pronouns["subject"].capitalize())
+    elif target.status.mood.happiness < -1:
+        $ reaction_description = "{0} looks at you with a trembling lip and red eyes. {1} looks like {2} is pretty melancholy.".format(target.names.standard, target.pronouns["subject"].capitalize(), target.pronouns["subject"])
+    elif target_sentiments.satisfaction > 3 and target.status.mood.happiness > 1:
+        $ reaction_description = "{0} greets you with a big smile. {1} is delighted at seeing you!".format(target.names.standard, target.pronouns["subject"].capitalize())
+    elif target.status.mood.happiness > 2:
+        $ reaction_description = "{0} greets you happily.".format(target.pronouns["subject"].capitalize())
+    else:
+        $ reaction_description = "{0} greets you back.".format(target.pronouns["subject"].capitalize())
+    $ msg = action_description + "\n\n" + reaction_description
+    $ current_interaction.greeting_happened = True
+    "[msg]"
+    return
+
 label Characters__Interactions__Friendly:
     $ msg = "What kind of friendly interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
     "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
-        entries.append(("Greet.", "GREET"))
         entries.append(("Chat.", "CHAT"))
         entries.append(("Compliment.", "COMPLIMENT"))
         entries.append(("Ask about mood.", "ASK_MOOD"))
         entries.append(("End friendly interactions.", "DONE"))
     $ selection = renpy.display_menu(entries)
-    if selection == "GREET":
-        $ renpy.call("Characters__Interactions__Friendly__Greet")
-        call Characters__Interactions__Friendly
-    elif selection == "CHAT":
+    if selection == "CHAT":
         $ renpy.call("Characters__Interactions__Friendly__Chat")
         call Characters__Interactions__Friendly
     elif selection == "COMPLIMENT":
@@ -21,14 +66,6 @@ label Characters__Interactions__Friendly:
     elif selection == "ASK_MOOD":
         $ renpy.call("Characters__Interactions__Friendly__Ask_Mood")
         call Characters__Interactions__Friendly
-    return
-
-label Characters__Interactions__Friendly__Greet:
-    $ action_description = "You offer {0} a friendly greeting.".format(target.names.standard)
-    # TODO: Build target's reaction from their feelings.
-    $ reaction_description = "{0} greets you back.".format(target.pronouns["subject"].capitalize())
-    $ msg = action_description + "\n\n" + reaction_description
-    "[msg]"
     return
 
 label Characters__Interactions__Friendly__Chat:

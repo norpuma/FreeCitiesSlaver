@@ -20,6 +20,7 @@ from datetime import datetime
 class Time_Control(object):
     def __init__(self):
         self._reset()
+        self.SECONDS_IN_AN_HOUR = 3600
     
     def _reset(self):
         self.date_time = None
@@ -31,3 +32,9 @@ class Time_Control(object):
     
     def get_timestamp(self):
         return self.date_time
+    
+    def days_since(self, timestamp):
+        return (timestamp - self.date_time).days
+
+    def hours_since(self, timestamp):
+        return (timestamp - self.date_time).total_seconds // self.SECONDS_IN_AN_HOUR

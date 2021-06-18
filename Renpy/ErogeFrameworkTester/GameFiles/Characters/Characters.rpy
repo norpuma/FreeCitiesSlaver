@@ -17,8 +17,10 @@ init 150:
         load_game_characters_locations() # Import from file "Town.jsonc"
 
         someone = person.Developed_Character().build(None, names_system.Character_Names.generate_random(fundamentals.Gender.FEMALE), fundamentals.Gender.FEMALE, 19)
+        someone.talk_color = "#ffff00"
         someone.location = town
         someone_else = person.Developed_Character().build(None, names_system.Character_Names.generate_random(fundamentals.Gender.MALE), fundamentals.Gender.MALE, 22)
+        someone_else.talk_color = "#00ff00"
         someone_else.location = town
         fundamentals.characters_database["THE_MAYOR"].location = town
 

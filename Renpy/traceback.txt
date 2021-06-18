@@ -1,36 +1,34 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
-    call Initialize__Protagonist
-  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
-    "HERE"
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
-    call Initialize__Protagonist
-  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
-    "HERE"
-AttributeError: 'NoneType' object has no attribute 'set_transition'
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13, in script call
+    call TownExplorer_Location_Actions_Selector
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 68, in script call
+    $ renpy.call(selection)
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 11, in script
+    $ msg = protagonist.format_say([greeting + polite_introduction, "you say, with a smile."], name_request)
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 11, in <module>
+    $ msg = protagonist.format_say([greeting + polite_introduction, "you say, with a smile."], name_request)
+TypeError: format_say() takes exactly 2 arguments (3 given)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 515, in main
-    renpy.game.context().run(node)
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
-    call Initialize__Protagonist
-  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
-    "HERE"
-  File "ErogeFrameworkTester/GameFiles/Characters/Characters.rpy", line 25, in script call
-    call Initialize__Protagonist
-  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 5, in script
-    "HERE"
-  File "renpy/ast.py", line 714, in execute
-    say_menu_with(self.with_, renpy.game.interface.set_transition)
-AttributeError: 'NoneType' object has no attribute 'set_transition'
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13, in script call
+    call TownExplorer_Location_Actions_Selector
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 68, in script call
+    $ renpy.call(selection)
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 11, in script
+    $ msg = protagonist.format_say([greeting + polite_introduction, "you say, with a smile."], name_request)
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 11, in <module>
+    $ msg = protagonist.format_say([greeting + polite_introduction, "you say, with a smile."], name_request)
+TypeError: format_say() takes exactly 2 arguments (3 given)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 FreeCitiesSlaver 0.1
-Thu Jun 17 01:55:38 2021
+Thu Jun 17 22:50:57 2021

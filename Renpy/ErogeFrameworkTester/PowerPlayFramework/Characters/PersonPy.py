@@ -1,12 +1,13 @@
 import Character_FundamentalsPy as fundamentals
 from .Character_NamesPy import Character_Names
-from .Status.MoodPy import Character_Mood
+from .Status.Character_StatusPy import Character_Status
 import renpy.exports as renpy
 
 def register_character(character):
     fundamentals.characters_database[character.id] = character
 
 class Minimal_Character(fundamentals.Buildable_From_Json):
+    default_character_talk_color = "#ffffff"
     def __init__(self):
         self.reset()
     
@@ -17,9 +18,14 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
         self.id = None
         self.gender = None
         self.age = None
+        self.talk_color = Minimal_Character.default_character_talk_color
         self._location = None
         self._pronouns = None
         return self
+
+    @classmethod
+    def set_default_character_talk_color(cls, color):
+        cls.default_character_talk_color = color
 
     def set_names(self, names):
         self.names = names
@@ -85,6 +91,23 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
         self.build(id, names, gender, age)
         
         return self
+    
+    def format_say(self, *message_parts):
+        is_quoted_part = True
+        is_subsequent_part = False
+        result = ""
+        for part in message_parts:
+            if part != "":
+                if is_subsequent_part:
+                    result += " "
+                else:
+                    is_subsequent_part = True
+                if is_quoted_part:
+                    result += "{color=" + self.talk_color + "}\"" + part + "\"{/color}"
+                else:
+                    result += part
+            is_quoted_part = not is_quoted_part
+        return result
 
 class Developed_Character(Minimal_Character):
     def __init__(self):
@@ -92,7 +115,7 @@ class Developed_Character(Minimal_Character):
         self._reset()
     
     def _reset(self):
-        self.mood = Character_Mood()
+        self.status = Character_Status()
         self.relationships = {}
 
     def add_relationship(self, relationship):
