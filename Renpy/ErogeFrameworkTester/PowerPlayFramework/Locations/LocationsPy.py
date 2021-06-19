@@ -1,9 +1,19 @@
+import json
 import renpy.exports as renpy
 
 locations_by_id = {}
 
 def register_location(location):
     locations_by_id[location.id] = location
+
+def load_locations_from_json(locations_json_file_with_path):
+    jsonc_file_with_path = locations_json_file_with_path
+    with open(jsonc_file_with_path) as json_file:
+        json_object = json.load(json_file)
+        json_file.close()
+    for location_id, location_json in json_object.items():
+        Location.build_part1_from_json(location_id, location_json)
+    create_connections_on_loaded_locations()
 
 class _Temporary_Connection(object):
     def __init__(self, starting_point_id, destination_id, from_starting_point_to_destination_text, from_destination_to_starting_point_text):
@@ -23,6 +33,8 @@ def create_connections_on_loaded_locations():
         destination_location = locations_by_id[temporary_connection.destination_id]
         starting_point_location.destinations.append(Destination(destination_location, temporary_connection.from_starting_point_to_destination_text))
         destination_location.destinations.append(Destination(starting_point_location, temporary_connection.from_destination_to_starting_point_text))
+        global _temporary_connections
+        _temporary_connections = {}
 
 class Location(object):
     def __init__(self):
