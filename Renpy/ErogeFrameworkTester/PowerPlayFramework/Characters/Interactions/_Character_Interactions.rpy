@@ -14,39 +14,42 @@ init python:
             self.greeting_happened = False
             self.remaining_small_talk_topics = []
 
-    def upsert_relationships(initiator, target):
-        if initiator.id not in target.relationships.keys():
-            target.relationships[initiator.id] = relationships.Characters_Relationship().build(initiator)
-            initiator.relationships[target.id] = relationships.Characters_Relationship().build(target)
-        target.relationships[initiator.id].history.last_overall_interaction_with_target_timestamp = time_control.time_control.get_timestamp()
+        def _upsert_participants_relationships(self):
+            if self.initiator.id not in self.target.relationships.keys():
+                self.target.relationships[self.initiator.id] = relationships.Characters_Relationship().build(self.initiator)
+                self.initiator.relationships[self.target.id] = relationships.Characters_Relationship().build(self.target)
+            self.target.relationships[self.initiator.id].history.last_overall_interaction_with_target_timestamp = time_control.time_control.get_timestamp()
     
-    def update_target_mood(initiator, target):
-        last_interaction_date = target.relationships[initiator.id].history.last_overall_interaction_with_target_timestamp
-        mood_modifiers = Character_Mood_Modifier(0, 0)
-        if last_interaction_date == None:
-            mood_modifiers = Character_Mood_Modifier.generate_random()
-        else:
-            days_since_last_interaction = time_control.time_control.days_since(last_interaction_date)
-            if days_since_last_interaction >= 2:
+        def update_target_mood(self):
+            last_interaction_date = self.target.relationships[self.initiator.id].history.last_overall_interaction_with_target_timestamp
+            mood_modifiers = Character_Mood_Modifier(0, 0)
+            if last_interaction_date == None:
                 mood_modifiers = Character_Mood_Modifier.generate_random()
-            elif days_since_last_interaction > 0:
-                mood_modifiers = Character_Mood_Modifier.generate_random(limited_to_small_range = True)
+            else:
+                days_since_last_interaction = time_control.time_control.days_since(last_interaction_date)
+                if days_since_last_interaction >= 2:
+                    mood_modifiers = Character_Mood_Modifier.generate_random()
+                elif days_since_last_interaction > 0:
+                    mood_modifiers = Character_Mood_Modifier.generate_random(limited_to_small_range = True)
 
-        target.status.mood.apply_modifiers(mood_modifiers)
-    
-    def initiate_small_talk_topics(target):
-        for topic in personality.potential_interests:
-            current_interaction.remaining_small_talk_topics.append(topic)
+            self.target.status.mood.apply_modifiers(mood_modifiers)
+        
+        def initiate_small_talk_topics(self):
+            for topic in personality.potential_interests:
+                current_interaction.remaining_small_talk_topics.append(topic)
+
+        def start(self):
+            self._upsert_participants_relationships()
+            self.update_target_mood()
+            self.initiate_small_talk_topics()
 
     def start_interaction(initiator, target):
         global current_interaction
         current_interaction = Character_Interaction_Situation(initiator, target)
-        upsert_relationships(initiator, target)
-        update_target_mood(initiator, target)
-        initiate_small_talk_topics(target)
+        current_interaction.start()
 
     def end_interaction():
-        current_interaction
+        current_interaction = None
 
     def build_player_interactions_with_characters_list(initiator, target):
         result = []

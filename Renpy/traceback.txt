@@ -3,38 +3,36 @@
 While running game code:
   File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13, in script call
     call TownExplorer_Location_Actions_Selector
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 68, in script call
-    $ renpy.call(selection)
-  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 65, in script call
-    $ renpy.call("Characters__Interactions__Friendly__Chat")
-  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 88, in script
-    if topics_key not in target.personality.interests.interests.keys():
-  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 88, in <module>
-    if topics_key not in target.personality.interests.interests.keys():
-NameError: name 'topics_key' is not defined
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 55, in script
+    $ start_interaction(protagonist, target)
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 55, in <module>
+    $ start_interaction(protagonist, target)
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 51, in start_interaction
+    current_interaction.start()
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 43, in start
+    current_interaction = Character_Interaction_Situation()
+TypeError: __init__() takes exactly 3 arguments (1 given)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13, in script call
     call TownExplorer_Location_Actions_Selector
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 68, in script call
-    $ renpy.call(selection)
-  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 65, in script call
-    $ renpy.call("Characters__Interactions__Friendly__Chat")
-  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 88, in script
-    if topics_key not in target.personality.interests.interests.keys():
-  File "renpy/ast.py", line 1852, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2249, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2242, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 88, in <module>
-    if topics_key not in target.personality.interests.interests.keys():
-NameError: name 'topics_key' is not defined
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 55, in script
+    $ start_interaction(protagonist, target)
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 55, in <module>
+    $ start_interaction(protagonist, target)
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 51, in start_interaction
+    current_interaction.start()
+  File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 43, in start
+    current_interaction = Character_Interaction_Situation()
+TypeError: __init__() takes exactly 3 arguments (1 given)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 FreeCitiesSlaver 0.1
-Sat Jun 19 03:10:40 2021
+Sat Jun 19 03:18:03 2021

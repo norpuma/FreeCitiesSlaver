@@ -31,7 +31,6 @@ label Characters__Interactions__Introductions__Polite:
 
 label Characters__Interactions__Friendly__Greet:
     $ action_description = "You offer {0} a friendly greeting.".format(target.names.standard)
-    # TODO: Build target's reaction from their feelings.
     $ target_sentiments = target.relationships[actor.id].sentiments
     if target_sentiments.satisfaction < 0:
         $ reaction_description = "{0} doesn't greet you back, just giving you the cold shoulder. {1} seems upset with you.".format(target.names.standard, target.pronouns["subject"].capitalize())
