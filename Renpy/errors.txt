@@ -2,13 +2,10 @@
 errors listed below, and try again.
 
 
-File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 25: expected statement.
-    elif target.status.mood.happiness > 2:
-               ^
-
-File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/Friendly_Interactions.rpy", line 27: expected statement.
-    else:
-        ^
+File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 6: invalid syntax
+    import .PowerPlayFramework.Characters.PersonalityPy as personality
+            ^
+    
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Thu Jun 17 22:23:09 2021
+Sat Jun 19 02:58:57 2021

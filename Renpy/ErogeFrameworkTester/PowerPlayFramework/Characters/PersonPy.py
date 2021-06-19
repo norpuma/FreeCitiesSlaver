@@ -1,6 +1,7 @@
 import Character_FundamentalsPy as fundamentals
 from .Character_NamesPy import Character_Names
 from .Status.Character_StatusPy import Character_Status
+from .PersonalityPy import Character_Personality
 import renpy.exports as renpy
 
 def register_character(character):
@@ -115,6 +116,8 @@ class Developed_Character(Minimal_Character):
         self._reset()
     
     def _reset(self):
+        self.personality = Character_Personality()
+
         self.status = Character_Status()
         self.relationships = {}
 

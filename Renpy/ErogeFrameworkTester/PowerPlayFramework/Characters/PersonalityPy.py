@@ -1,4 +1,66 @@
+import random
+
 collection_of_personalities = {}
+
+ENUM__INTERESTS__SCIENCE = "SCIENCE"
+ENUM__INTERESTS__SPORTS = "SPORTS"
+ENUM__INTERESTS__GAMES = "GAMES"
+ENUM__INTERESTS__COOKING = "COOKING"
+ENUM__INTERESTS__NEWS = "NEWS"
+ENUM__INTERESTS__MOVIES = "MOVIES"
+ENUM__INTERESTS__FASHION = "FASHION"
+ENUM__INTERESTS__COMPUTERS = "COMPUTERS"
+ENUM__INTERESTS__SEX = "SEX"
+ENUM__INTERESTS__ROMANCE = "ROMANCE"
+ENUM__INTERESTS__MUSIC = "MUSIC"
+ENUM__INTERESTS__BOOKS = "BOOKS"
+ENUM__INTERESTS__POLITICS = "POLITICS"
+
+potential_interests = [
+    ENUM__INTERESTS__SCIENCE,
+    ENUM__INTERESTS__SPORTS,
+    ENUM__INTERESTS__GAMES,
+    ENUM__INTERESTS__COOKING,
+    ENUM__INTERESTS__NEWS,
+    ENUM__INTERESTS__MOVIES,
+    ENUM__INTERESTS__FASHION,
+    ENUM__INTERESTS__COMPUTERS,
+    ENUM__INTERESTS__SEX,
+    ENUM__INTERESTS__ROMANCE,
+    ENUM__INTERESTS__MUSIC,
+    ENUM__INTERESTS__BOOKS,
+    ENUM__INTERESTS__POLITICS
+]
+
+class Character_Interests(object):
+    def __init__(self):
+        self.interests = {}
+    
+    @classmethod
+    def generate_random(cls):
+        result = cls()
+        used_indexes = []
+        for i in range(3):
+            new_topic_found = False
+            while not new_topic_found:
+                topic_index = random.randrange(0, len(potential_interests))
+                if topic_index not in used_indexes:
+                    used_indexes.append(topic_index)
+                    new_topic_found = True
+                    topic = potential_interests[topic_index]
+                    result.interests[topic] = random.randint(1, 3)
+        
+        for i in range(2):
+            new_topic_found = False
+            while not new_topic_found:
+                topic_index = random.randrange(0, len(potential_interests))
+                if topic_index not in used_indexes:
+                    used_indexes.append(topic_index)
+                    new_topic_found = True
+                    topic = potential_interests[topic_index]
+                    result.interests[topic] = -1
+
+        return result
 
 class Character_Preferences(object):
     def __init__(self):
@@ -31,16 +93,19 @@ class Character_Preference(object):
 
 class Character_Personality(object):
     def __init__(self):
-        self.integrity = 0 # How easy it is to change that character's opinion.
-        self.obedience = 0 # How obedient this character is when pressed.
-        self.liberated = 0 # How sexually liberated this character is.
-        self.empathy = 0 # How much this character cares about others.
-        self.pride = 0
-        self.dutifulness = 0
-        self.slave_role = 0
-        self.libido = 0
-        self.modesty = 0
-        self.courage = 0
+        self.interests = Character_Interests.generate_random()
+
+
+        # self.integrity = 0 # How easy it is to change that character's opinion.
+        # self.obedience = 0 # How obedient this character is when pressed.
+        # self.liberated = 0 # How sexually liberated this character is.
+        # self.empathy = 0 # How much this character cares about others.
+        # self.pride = 0
+        # self.dutifulness = 0
+        # self.slave_role = 0
+        # self.libido = 0
+        # self.modesty = 0
+        # self.courage = 0
 
 
         # TODO: From LabRats2

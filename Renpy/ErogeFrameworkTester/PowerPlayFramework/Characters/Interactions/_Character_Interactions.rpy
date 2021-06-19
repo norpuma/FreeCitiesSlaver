@@ -3,6 +3,7 @@ init python:
     import PowerPlayFramework.Characters.PersonPy as person
     from PowerPlayFramework.Characters.Status.MoodPy import Character_Mood_Modifier
     import PowerPlayFramework.Characters.Relationships._RelationshipsPy as relationships
+    import PowerPlayFramework.Characters.PersonalityPy as personality
 
     current_interaction = None
 
@@ -11,15 +12,16 @@ init python:
             self.initiator = initiator
             self.target = target
             self.greeting_happened = False
+            self.remaining_small_talk_topics = []
 
-    def start_interaction(initiator, target):
-        global current_interaction
-        current_interaction = Character_Interaction_Situation(initiator, target)
+    def upsert_relationships(initiator, target):
         if initiator.id not in target.relationships.keys():
             target.relationships[initiator.id] = relationships.Characters_Relationship().build(initiator)
             initiator.relationships[target.id] = relationships.Characters_Relationship().build(target)
-        last_interaction_date = target.relationships[initiator.id].history.last_overall_interaction_with_target_timestamp
         target.relationships[initiator.id].history.last_overall_interaction_with_target_timestamp = time_control.time_control.get_timestamp()
+    
+    def update_target_mood(initiator, target):
+        last_interaction_date = target.relationships[initiator.id].history.last_overall_interaction_with_target_timestamp
         mood_modifiers = Character_Mood_Modifier(0, 0)
         if last_interaction_date == None:
             mood_modifiers = Character_Mood_Modifier.generate_random()
@@ -31,6 +33,17 @@ init python:
                 mood_modifiers = Character_Mood_Modifier.generate_random(limited_to_small_range = True)
 
         target.status.mood.apply_modifiers(mood_modifiers)
+    
+    def initiate_small_talk_topics(target):
+        for topic in personality.potential_interests:
+            current_interaction.remaining_small_talk_topics.append(topic)
+
+    def start_interaction(initiator, target):
+        global current_interaction
+        current_interaction = Character_Interaction_Situation(initiator, target)
+        upsert_relationships(initiator, target)
+        update_target_mood(initiator, target)
+        initiate_small_talk_topics(target)
 
     def end_interaction():
         current_interaction

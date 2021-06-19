@@ -1,3 +1,6 @@
+init 150 python:
+    import PowerPlayFramework.Characters.PersonalityPy as personality
+
 label Characters__Interactions__Introductions__Polite:
     if target.status.mood.calm <= -2:
         $ msg = "{0} seems too angry to approach. You should probably try again at another time.".format(target.pronouns["subject"].capitalize())
@@ -13,7 +16,7 @@ label Characters__Interactions__Introductions__Polite:
     $ introduction = "My name is {0} {1}, people call me {2}.".format(target.names.first, target.names.last, target.names.standard)
     if target.status.mood.happiness <= -2:
         $ greeting = random.choice(["Hello!", "Hi!", "Hey!"])
-        $ msg = target.format_say(greeting, "{0} greets you, morosely. Something seems to be upsetting, {1}.".format(target.pronouns["subject"].capitalize(), target.pronouns["object"]), "It's...", "{0} lets out a heavy sigh.".format(target.pronouns["subject"]), "It's nice ot meet you. " + introduction)
+        $ msg = target.format_say(greeting, "{0} greets you, morosely. Something seems to be upsetting, {1}.".format(target.pronouns["subject"].capitalize(), target.pronouns["object"]), "It's...", "{0} lets out a heavy sigh.".format(target.pronouns["subject"]), "It's nice to meet you. " + introduction)
     elif target.status.mood.happiness > 2:
         $ greeting = random.choice(["Hello!", "Hi!", "Hey!"])
         $ msg = target.format_say(greeting, "{0} greets you, with a big smile.".format(target.pronouns["subject"].capitalize()), "It's a pleasure to meet you! " + introduction)
@@ -52,7 +55,8 @@ label Characters__Interactions__Friendly:
     "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
-        entries.append(("Chat.", "CHAT"))
+        if len(current_interaction.remaining_small_talk_topics) > 0:
+            entries.append(("Chat.", "CHAT"))
         entries.append(("Compliment.", "COMPLIMENT"))
         entries.append(("Ask about mood.", "ASK_MOOD"))
         entries.append(("End friendly interactions.", "DONE"))
@@ -69,9 +73,33 @@ label Characters__Interactions__Friendly:
     return
 
 label Characters__Interactions__Friendly__Chat:
-    $ action_description = "You chat with {0} for a little while.".format(target.names.standard)
-    # TODO: Build target's reaction from their feelings.
-    $ reaction_description = "{0} enjoys the conversation.".format(target.pronouns["subject"].capitalize())
+    $ msg = "What topic do you want to chat about?"
+    "{color=#ff7f50}[msg]{/color}"
+    python:
+        entries = []
+        for interest in current_interaction.remaining_small_talk_topics:
+            interest_entry = interest.lower().capitalize()
+            entries.append((interest_entry, interest_entry))
+    $ selection = renpy.display_menu(entries)
+    $ topics_key = selection.upper()
+    $ current_interaction.remaining_small_talk_topics.remove(selection.upper())
+
+    $ action_description = "You chat with {0} about '{1}' for a little while.".format(target.names.standard, selection.lower())
+    if topics_key not in target.personality.interests.interests.keys():
+        $ reaction_description = "{0} appreciates your efforts, but is not very interested in the subject.".format(target.pronouns["subject"].capitalize())
+    elif target.personality.interests.interests[topics_key] <= -1:
+        $ reaction_description = "{0} makes a grimace. The subject doesn't seem to please {1}.".format(target.pronouns["subject"].capitalize(), target.pronouns["object"])
+        $ target.status.mood.happiness -= 1
+        $ target.status.mood.calm -= 1
+    elif target.personality.interests.interests[topics_key] <= 2:
+        $ reaction_description = "{0} smiles and actively participates in the conversation. {0} is happy that you have talked about this.".format(target.pronouns["subject"].capitalize())
+        $ target.status.mood.happiness += 1
+        $ target.status.mood.calm += 1
+    else: # target.personality.interests.interests[topics_key] >= 3:
+        $ reaction_description = "{0} is very enthusiastic when talking. {0} seems this to love this subject.".format(target.pronouns["subject"].capitalize())
+        $ target.status.mood.happiness += 2
+        $ target.status.mood.calm += 1
+
     $ msg = action_description + "\n\n" + reaction_description
     "[msg]"
     return
