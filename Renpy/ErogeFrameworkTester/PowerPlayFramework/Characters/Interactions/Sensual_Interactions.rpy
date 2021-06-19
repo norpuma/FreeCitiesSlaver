@@ -18,4 +18,3 @@ label Characters__Interactions__Sensual__Kiss:
     $ msg = action_description + "\n\n" + reaction_description
     "[msg]"
     return
-

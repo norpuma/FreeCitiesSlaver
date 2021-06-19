@@ -13,6 +13,7 @@ init python:
             self.target = target
             self.greeting_happened = False
             self.remaining_small_talk_topics = []
+            self.compliment_happened = False
 
         def _upsert_participants_relationships(self):
             if self.initiator.id not in self.target.relationships.keys():

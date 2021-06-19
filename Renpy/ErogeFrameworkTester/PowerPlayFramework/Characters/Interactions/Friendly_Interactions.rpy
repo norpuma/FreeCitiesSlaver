@@ -56,7 +56,8 @@ label Characters__Interactions__Friendly:
         entries = []
         if len(current_interaction.remaining_small_talk_topics) > 0:
             entries.append(("Chat.", "CHAT"))
-        entries.append(("Compliment.", "COMPLIMENT"))
+        if not current_interaction.compliment_happened:
+            entries.append(("Compliment.", "COMPLIMENT"))
         entries.append(("Ask about mood.", "ASK_MOOD"))
         entries.append(("End friendly interactions.", "DONE"))
     $ selection = renpy.display_menu(entries)
@@ -88,7 +89,6 @@ label Characters__Interactions__Friendly__Chat:
         $ reaction_description = "{0} appreciates your efforts, but is not very interested in the subject.".format(target.pronouns["subject"].capitalize())
     elif target.personality.interests.interests[topics_key] <= -1:
         $ reaction_description = "{0} makes a grimace. The subject doesn't seem to please {1}.".format(target.pronouns["subject"].capitalize(), target.pronouns["object"])
-        $ target.status.mood.happiness -= 1
         $ target.status.mood.calm -= 1
     elif target.personality.interests.interests[topics_key] <= 2:
         $ reaction_description = "{0} smiles and actively participates in the conversation. {0} is happy that you have talked about this.".format(target.pronouns["subject"].capitalize())
@@ -104,17 +104,30 @@ label Characters__Interactions__Friendly__Chat:
     return
 
 label Characters__Interactions__Friendly__Compliment:
+    $ current_interaction.compliment_happened = True
     $ action_description = "You offer {0} a compliment.".format(target.names.standard)
-    # TODO: Build target's reaction from their feelings.
     $ reaction_description = "{0} smiles in appreciation of your kind words.".format(target.pronouns["subject"].capitalize())
+    $ target.status.mood.happiness += 1
+    $ target.status.mood.calm += 2
     $ msg = action_description + "\n\n" + reaction_description
     "[msg]"
     return
 
 label Characters__Interactions__Friendly__Ask_Mood:
-    $ action_description = "You ask {0} how {1} is feeling.".format(target.names.standard, target.pronouns["subject"])
+    $ action_description = actor.format_say("How are you feeling, {0}?".format(target.names.standard))
     # TODO: Build target's reaction from their feelings.
-    $ reaction_description = "{0} tells you {1} is feeling okay.".format(target.pronouns["subject"].capitalize(), target.pronouns["subject"])
+    if target.status.mood.happiness < target.status.mood.calm and target.status.mood.happiness <= -4:
+        $ reaction_description = target.format_say("I'm- I'm feeling really shitty, {0},".format(actor.names.standard), " {0} tells you, sobbing.".format(target.pronouns["subject"]))
+    elif target.status.mood.calm <= -4:
+        $ reaction_description = target.format_say("I'm really fucking angry! That's how I reel!", " {0} tells you with a snarl.".format(target.pronouns["subject"].capitalize()))
+    elif target.status.mood.happiness <= -2:
+        $ reaction_description = target.format_say("I'm not- I'm not feeling good at all, {0},".format(actor.names.standard), " {0} tells you, hesitantly.".format(target.pronouns["subject"]))
+    elif target.status.mood.happiness <= 0:
+        $reaction_description = target.format_say("I'm fine,", "{0} tells you without much conviction.".format(target.pronouns["subject"]))
+    elif target.status.mood.happiness <= 2:
+        $reaction_description = target.format_say("I'm feeling pretty good, thank you!", "{0} tells you with a genuine smile.".format(target.pronouns["subject"].capitalize()))
+    else: # if target.status.mood.happiness > 2:
+        $reaction_description = target.format_say("I'm feeling really great, thank you!", "{0} with a big smile.".format(target.pronouns["subject"].capitalize()))
     $ msg = action_description + "\n\n" + reaction_description
     "[msg]"
     return

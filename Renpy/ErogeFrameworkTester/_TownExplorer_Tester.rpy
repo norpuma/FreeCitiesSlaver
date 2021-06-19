@@ -29,7 +29,7 @@ label TownExplorer_Location_Actions_Selector:
     elif selection == "INTERACTION":
         jump TownExplorer_Character_Selector
     else: # selection == "HOME"
-        $ current_location = town
+        $ current_location = locations.locations_by_id["TOWN"]
         jump TownExplorer_Tester_Loop
     jump TownExplorer_Tester_Loop
 
@@ -37,8 +37,12 @@ label TownExplorer_Location_Selector:
     "{color=#ff7f50}Where do you want to go?{/color}"
     if current_location.destinations != []:
         $ entries = locations__build_menu_entries_from_destinations(current_location.destinations)
+        $ entries.append(("Nevermind.", "CANCEL"))
         $ selection = renpy.display_menu(entries)
-        $ current_location = selection
+        if selection != "CANCEL":
+            $ current_location = selection
+        else:
+            jump TownExplorer_Location_Actions_Selector
     return
 
 label TownExplorer_Character_Selector:
