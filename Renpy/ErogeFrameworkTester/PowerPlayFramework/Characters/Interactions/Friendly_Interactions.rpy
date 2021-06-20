@@ -50,8 +50,6 @@ label Characters__Interactions__Friendly__Greet:
     return
 
 label Characters__Interactions__Friendly:
-    $ msg = "What kind of friendly interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
-    "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
         if len(current_interaction.remaining_small_talk_topics) > 0:
@@ -60,7 +58,13 @@ label Characters__Interactions__Friendly:
             entries.append(("Compliment.", "COMPLIMENT"))
         entries.append(("Ask about mood.", "ASK_MOOD"))
         entries.append(("End friendly interactions.", "DONE"))
-    $ selection = renpy.display_menu(entries)
+    $ prompt_msg = "What kind of friendly interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
+    if use_status_screen_menus:
+        call screen sidebar_choice(entries, prompt = prompt_msg)
+        $ selection = _return
+    else:
+        "{color=#ff7f50}[prompt_msg]{/color}"
+        $ selection = renpy.display_menu(entries)
     if selection == "CHAT":
         $ renpy.call("Characters__Interactions__Friendly__Chat")
         call Characters__Interactions__Friendly
@@ -73,14 +77,18 @@ label Characters__Interactions__Friendly:
     return
 
 label Characters__Interactions__Friendly__Chat:
-    $ msg = "What topic do you want to chat about?"
-    "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
         for interest in current_interaction.remaining_small_talk_topics:
             interest_entry = interest.lower().capitalize()
             entries.append((interest_entry, interest_entry))
-    $ selection = renpy.display_menu(entries)
+    $ prompt_msg = "What topic do you want to chat about?"
+    if use_status_screen_menus:
+        call screen sidebar_choice(entries, prompt = prompt_msg)
+        $ selection = _return
+    else:
+        "{color=#ff7f50}[prompt_msg]{/color}"
+        $ selection = renpy.display_menu(entries)
     $ topics_key = selection.upper()
     $ current_interaction.remaining_small_talk_topics.remove(selection.upper())
 

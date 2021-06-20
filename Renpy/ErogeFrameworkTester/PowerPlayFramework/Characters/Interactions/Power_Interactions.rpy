@@ -1,12 +1,16 @@
 label Characters__Interactions__Power:
-    $ msg = "What kind of power interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
-    "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
         entries.append(("Tell {0} what {1} should do...".format(target.pronouns["object"], target.pronouns["subject"]), "COMMAND"))
         entries.append(("Ask {0} what {1} wants you to do...".format(target.pronouns["object"], target.pronouns["subject"]), "OBEY"))
         entries.append(("End power interactions.", "DONE"))
-    $ selection = renpy.display_menu(entries)
+    $ prompt_msg = "What kind of power interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
+    if use_status_screen_menus:
+        call screen sidebar_choice(entries, prompt = prompt_msg)
+        $ selection = _return
+    else:
+        "{color=#ff7f50}[prompt_msg]{/color}"
+        $ selection = renpy.display_menu(entries)
     if selection == "COMMAND":
         $ renpy.call("Characters__Interactions__Power__Command")
         call Characters__Interactions__Power
@@ -16,13 +20,17 @@ label Characters__Interactions__Power:
     return
 
 label Characters__Interactions__Power__Command:
-    $ msg = "What do you command '{0} {1}' to do?".format(target.names.standard, target.names.last)
-    "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
         entries.append(("Tell {0} to be more agreeable.".format(target.pronouns["object"]), "AGREEABLE"))
         entries.append(("End power interactions.", "DONE"))
-    $ selection = renpy.display_menu(entries)
+    $ prompt_msg = "What do you command '{0} {1}' to do?".format(target.names.standard, target.names.last)
+    if use_status_screen_menus:
+        call screen sidebar_choice(entries, prompt = prompt_msg)
+        $ selection = _return
+    else:
+        "{color=#ff7f50}[prompt_msg]{/color}"
+        $ selection = renpy.display_menu(entries)
     if selection == "AGREEABLE":
         $ renpy.call("Characters__Interactions__Power__Command__Agreeable")
         call Characters__Interactions__Power

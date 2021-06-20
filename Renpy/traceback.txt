@@ -1,34 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13, in script call
-    call TownExplorer_Location_Actions_Selector
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 39, in script
-    $ entries = locations__build_menu_entries_from_destinations(current_location.destinations)
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 39, in <module>
-    $ entries = locations__build_menu_entries_from_destinations(current_location.destinations)
-  File "ErogeFrameworkTester/PowerPlayFramework/Locations/Locations.rpy", line 7, in locations__build_menu_entries_from_destinations
-    result.append((destination.exit_text, locations_by_id[destination.target_location]))
-NameError: global name 'locations_by_id' is not defined
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 7, in script call
+    call Initialize__Protagonist
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 3, in script
+    $ protagonist = person.Developed_Character().build("PROTAGONIST", names_system.Character_Names().build(standard_name = "Jim", standard_possessive = "Jim's", first = "James", first_possessive = "James'", last = "Clearing", last_possessive = "Clearing's"), fundamentals.Gender.MALE, 25)
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 3, in <module>
+    $ protagonist = person.Developed_Character().build("PROTAGONIST", names_system.Character_Names().build(standard_name = "Jim", standard_possessive = "Jim's", first = "James", first_possessive = "James'", last = "Clearing", last_possessive = "Clearing's"), fundamentals.Gender.MALE, 25)
+Exception: ERROR: Character_Names.build(): Can't build name 'Jim'. Name already in database.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 13, in script call
-    call TownExplorer_Location_Actions_Selector
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 39, in script
-    $ entries = locations__build_menu_entries_from_destinations(current_location.destinations)
+  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 7, in script call
+    call Initialize__Protagonist
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 3, in script
+    $ protagonist = person.Developed_Character().build("PROTAGONIST", names_system.Character_Names().build(standard_name = "Jim", standard_possessive = "Jim's", first = "James", first_possessive = "James'", last = "Clearing", last_possessive = "Clearing's"), fundamentals.Gender.MALE, 25)
   File "renpy/ast.py", line 922, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "renpy/python.py", line 2218, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "ErogeFrameworkTester/_TownExplorer_Tester.rpy", line 39, in <module>
-    $ entries = locations__build_menu_entries_from_destinations(current_location.destinations)
-  File "ErogeFrameworkTester/PowerPlayFramework/Locations/Locations.rpy", line 7, in locations__build_menu_entries_from_destinations
-    result.append((destination.exit_text, locations_by_id[destination.target_location]))
-NameError: global name 'locations_by_id' is not defined
+  File "ErogeFrameworkTester/GameFiles/Characters/Protagonist.rpy", line 3, in <module>
+    $ protagonist = person.Developed_Character().build("PROTAGONIST", names_system.Character_Names().build(standard_name = "Jim", standard_possessive = "Jim's", first = "James", first_possessive = "James'", last = "Clearing", last_possessive = "Clearing's"), fundamentals.Gender.MALE, 25)
+  File "PowerPlayFramework/Characters/Character_NamesPy.py", line 151, in build
+  File "renpy/exports.py", line 2494, in error
+    _error_handlers[-1](msg)
+  File "renpy/exports.py", line 2471, in _error
+    raise Exception(msg)
+Exception: ERROR: Character_Names.build(): Can't build name 'Jim'. Name already in database.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.4.1439
 FreeCitiesSlaver 0.1
-Sat Jun 19 17:03:40 2021
+Sun Jun 20 15:49:29 2021

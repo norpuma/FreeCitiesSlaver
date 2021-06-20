@@ -1,11 +1,15 @@
 label Characters__Interactions__Sensual:
-    $ msg = "What kind of sensual interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
-    "{color=#ff7f50}[msg]{/color}"
     python:
         entries = []
         entries.append(("Kiss.", "KISS"))
         entries.append(("End sensual interactions.", "DONE"))
-    $ selection = renpy.display_menu(entries)
+    $ prompt_msg = "What kind of sensual interaction do you want to take with '{0} {1}'?".format(target.names.standard, target.names.last)
+    if use_status_screen_menus:
+        call screen sidebar_choice(entries, prompt = prompt_msg)
+        $ selection = _return
+    else:
+        "{color=#ff7f50}[prompt_msg]{/color}"
+        $ selection = renpy.display_menu(entries)
     if selection == "KISS":
         $ renpy.call("Characters__Interactions__Sensual__Kiss")
         call Characters__Interactions__Sensual

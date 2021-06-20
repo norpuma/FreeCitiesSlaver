@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "ErogeFrameworkTester/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 6: invalid syntax
-    import .PowerPlayFramework.Characters.PersonalityPy as personality
-            ^
-    
+File "ErogeFrameworkTester/PowerPlayFramework/UI/screen_additions.rpy", line 94: u'background' is not a keyword argument or valid child for the viewport statement.
+    background "#88000088"
+              ^
 
 Ren'Py Version: Ren'Py 7.4.4.1439
-Sat Jun 19 02:58:57 2021
+Sun Jun 20 15:41:35 2021

@@ -38,6 +38,7 @@ python:
     TIME_27__LATE_NIGHT = "TIME_27__LATE_NIGHT"
 
 label start:
+    $ side_bar_config = Side_Bar_Config(renpy.get_physical_size())
     call Game__Initialize
     # "{color=[unimportant_text_color]}unimportant_text_color{/color}\n\
     # {color=[important_text_color]}important_text_color{/color}\n\
