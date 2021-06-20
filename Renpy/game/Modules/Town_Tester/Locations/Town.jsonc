@@ -1,0 +1,67 @@
+{
+    "TOWN_TESTER__TOWN": {
+        "name": "Sometown",
+        "visit_callable": "Sometown__Visit",
+        "is_public": true
+    },
+    "TOWN_TESTER__TOWN_HALL": {
+        "name": "Town Hall",
+        "visit_callable": "Town_Hall__Visit",
+        "is_public": false,
+        "connections": [
+            {
+                "exit_text": "Go to town center",
+                "destination_id": "TOWN_TESTER__TOWN",
+                "coming_in_text": "Go to the town hall"
+            }
+        ]
+    },
+    "TOWN_TESTER__GENERAL_STORE": {
+        "name": "General Store",
+        "visit_callable": "General_Store__Visit",
+        "is_public": false,
+        "connections": [
+            {
+                "exit_text": "Go to town center",
+                "destination_id": "TOWN_TESTER__TOWN",
+                "coming_in_text": "Go to the general store"
+            }
+        ]
+    },
+    "TOWN_TESTER__SCHOOL": {
+        "name": "School",
+        "visit_callable": "School__Visit",
+        "is_public": false,
+        "connections": [
+            {
+                "exit_text": "Go to town center",
+                "destination_id": "TOWN_TESTER__TOWN",
+                "coming_in_text": "Go to the school"
+            }
+        ]
+    },
+    "TAVERN": {
+        "name": "Tavern",
+        "visit_callable": "Tavern__Visit",
+        "is_public": true,
+        "connections": [
+            {
+                "exit_text": "Go to town center",
+                "destination_id": "TOWN_TESTER__TOWN",
+                "coming_in_text": "Go to the tavern"
+            }
+        ]
+    },
+    "HOTEL": {
+        "name": "Hotel",
+        "visit_callable": "Hotel__Visit",
+        "is_public": true,
+        "connections": [
+            {
+                "exit_text": "Go to town center",
+                "destination_id": "TOWN_TESTER__TOWN",
+                "coming_in_text": "Go to the hotel"
+            }
+        ]
+    }
+}

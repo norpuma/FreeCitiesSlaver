@@ -1,0 +1,25 @@
+{
+    "TOWN_TESTER__THE_MAYOR": {
+        "names": {
+            "standard": "Emily",
+            "last": "Waters"
+        },
+        "gender": "FEMALE",
+        "age": 35,
+        "location": "TOWN_HALL"
+    },
+    "TOWN_TESTER__TOWN_HALL_EMPLOYEE_1": {
+        "names": {
+            "first": "Jenna"
+        },
+        "gender": "FEMALE",
+        "age": 19
+    },
+    "TOWN_TESTER__TOWN_HALL_EMPLOYEE_2": {
+        "names": {
+            "last": "Amour"
+        },
+        "gender": "MALE",
+        "age": 22
+    }
+}

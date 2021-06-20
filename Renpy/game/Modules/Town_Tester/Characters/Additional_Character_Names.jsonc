@@ -1,0 +1,23 @@
+{
+    "lastNames": {
+        "Sillies": "Sillies"
+    },
+    "femaleNameDatabase": {
+        "Silly_Girl": {
+            "possessive": "Silly_Girl's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        }
+    },
+    "maleNameDatabase": {
+        "Silly_Guy": {
+            "possessive": "Silly_Guy's",
+            "canBeFirstName": true,
+            "canBeNickname": false,
+            "linkedNicknames": [],
+            "linkedFirstNames": []
+        }
+    }
+}
