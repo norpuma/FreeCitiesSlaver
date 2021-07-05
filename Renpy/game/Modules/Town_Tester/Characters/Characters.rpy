@@ -22,8 +22,8 @@ label TOWN_TESTER__Character_Initialization__First_Pass:
 label TOWN_TESTER__Character_Initialization__Second_Pass:
     python:
         for character in fundamentals.characters_database.values():
-            if character._location == None:
-                character._location = locations.locations_by_id["TOWN_TESTER__TOWN"]
+            if character.location == None:
+                character.location = locations.locations_by_id["TOWN_TESTER__TOWN"]
             if character.id == "TOWN_TESTER__TEACHER_1":
-                character._location = locations.locations_by_id["TOWN_TESTER__SCHOOL"]
+                character.location = locations.locations_by_id["TOWN_TESTER__SCHOOL"]
     return
