@@ -1,5 +1,6 @@
 class Character_Body(object):
-    def __init__(self, gender):
+    def __init__(self, character_id, gender):
+        self.character_id = character_id
         self._initialize_body_parts(gender)
         self.reset(gender)
 

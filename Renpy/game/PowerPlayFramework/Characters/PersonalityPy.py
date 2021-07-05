@@ -92,7 +92,8 @@ class Character_Preference(object):
         return
 
 class Character_Personality(object):
-    def __init__(self):
+    def __init__(self, character_id):
+        self.character_id = character_id
         self.interests = Character_Interests.generate_random()
 
 

@@ -41,7 +41,8 @@ ENUM__EROGENOUS_ZONES__ANUS = "ENUM__EROGENOUS_ZONES__ANUS"
 ENUM__EROGENOUS_ZONES__RECTUM = "ENUM__EROGENOUS_ZONES__RECTUM"
 
 class Character_Sexuality(object):
-    def __init__(self):
+    def __init__(self, character_id):
+        self.character_id = character_id
         return
     
     @classmethod

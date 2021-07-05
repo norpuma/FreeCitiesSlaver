@@ -9,19 +9,19 @@ def register_character(character):
 
 def load_characters_from_json_object(json_object):
     for key, value in json_object.items():
-        new_character = Developed_Character().build_from_json(key, value)
+        new_character = Developed_Character(key).build_from_json(key, value)
 
 
 class Minimal_Character(fundamentals.Buildable_From_Json):
     default_character_talk_color = "#ffffff"
-    def __init__(self):
-        self.reset()
+    def __init__(self, id):
+        self._reset(id)
     
-    def reset(self):
+    def _reset(self, id):
         if hasattr(self, "id") and self.id in fundamentals.characters_database.keys():
             fundamentals.characters_database.pop(self.id)
         self.names = None
-        self.id = None
+        self.id = id
         self.gender = None
         self.age = None
         self.talk_color = Minimal_Character.default_character_talk_color
@@ -65,9 +65,10 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
         return self._pronouns
 
     def build(self, id, names, gender, age):
-        self.reset()
-        if id != None and id != "":
-            self.id = id
+        self._reset(id)
+        if id is None or id == "":
+            renpy.error("ERROR: Cannot create Minimal_Character without an 'id'.")
+        self._reset(id)
         self.set_names(names)
         self.set_gender(gender)
         self.set_age(age)
@@ -85,7 +86,7 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
             gender = fundamentals.Gender.generate_random()
         if "names" in json.keys():
             control = "PARTIAL"
-            names = Character_Names().build_from_json(gender, json["names"])
+            names = Character_Names(id).build_from_json(id, gender, json["names"])
         else:
             control = "FULL"
             names = Character_Names.generate_random(gender)
@@ -95,9 +96,11 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
             # TODO: Generate random value instead of rasing and error.
             renpy.error("ERROR: Minimal_Character.build_from_json(): Character does not have a 'age' field.")
     
-        self.build(id, names, gender, age)
+        result = self.build(id, names, gender, age)
+        # NORPUMA: REMOVE after debugging
+        #result._location = ""
         
-        return self
+        return result
     
     def format_say(self, *message_parts):
         is_quoted_part = True
@@ -116,13 +119,31 @@ class Minimal_Character(fundamentals.Buildable_From_Json):
             is_quoted_part = not is_quoted_part
         return result
 
-class Developed_Character(Minimal_Character):
-    def __init__(self):
-        super(Developed_Character, self).__init__()
-        self._reset()
+    def move_to_location(self, target_location):
+        if self.location is not None and self.location.is_character_here(self):
+            self.location.remove_character(self)
+        self.location = target_location
+        if target_location is not None:
+            target_location.add_character(self)
     
-    def _reset(self):
-        self.personality = Character_Personality()
+    def get_trait(self, trait):
+        return None
+    
+    def compare_trait(self, trait, comparing_expression):
+        return False
+    
+    def execute_with_trait(self, trait, function):
+        return False
+
+class Developed_Character(Minimal_Character):
+    def __init__(self, id):
+        super(Developed_Character, self).__init__(id)
+        self._reset(id)
+    
+    def _reset(self, id):
+        super(Developed_Character, self)._reset(id)
+        self.id = id
+        self.personality = Character_Personality(self.id)
 
         self.status = Character_Status()
         self.relationships = {}
@@ -131,7 +152,7 @@ class Developed_Character(Minimal_Character):
         self.relationships[relationship.target] = relationship
 
     def build(self, id, names, gender, age):
-        self.reset()
+        self._reset(id)
         super(Developed_Character, self).build(id, names, gender, age)
         return self
 

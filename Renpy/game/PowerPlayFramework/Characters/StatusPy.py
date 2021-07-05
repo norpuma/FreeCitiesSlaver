@@ -35,7 +35,8 @@ ENUM__SKILLS__STUDIOUS = "ENUM__SKILLS__STUDIOUS"
 ENUM__SKILLS__PROFESSIONALISM = "ENUM__SKILLS__PROFESSIONALISM"
 
 class Character_Status(object):
-    def __init__(self):
+    def __init__(self, character_id):
+        self.character_id = character_id
         self.mood = Character_Mood()
         self.feelings_towards_protagonist = Character_Feelings()
         self.money = 0

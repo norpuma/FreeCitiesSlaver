@@ -111,10 +111,11 @@ def possessive_from_name(names_resource, name, should_fail_if_not_in_database = 
     return possessive
 
 class Character_Names(object):
-    def __init__(self):
-        self.reset()
+    def __init__(self, character_id):
+        self._reset(character_id)
     
-    def reset(self):
+    def _reset(self, character_id):
+        self.character_id = character_id
         self.standard = None
         self.standard_possessive = None
         self.first = None
@@ -135,7 +136,8 @@ class Character_Names(object):
         # # master, boss, goddess, my queen, princess
         # self.superiorNames = []
 
-    def build(self, gender, standard_name, standard_possessive = None, first = None, first_possessive = None, last = None, last_possessive = None, should_consume_names = True, should_fail_if_in_used_database = True, should_fail_if_not_in_database = False):
+    def build(self, character_id, gender, standard_name, standard_possessive = None, first = None, first_possessive = None, last = None, last_possessive = None, should_consume_names = True, should_fail_if_in_used_database = True, should_fail_if_not_in_database = False):
+        self._reset(character_id)
         self.standard = standard_name
         if (standard_possessive != None):
             self.standard_possessive = standard_possessive
@@ -177,7 +179,7 @@ class Character_Names(object):
             setattr(self, kind + "Possessive", newName + "'s")
 
     @classmethod
-    def generate_random(cls, gender, standard = None, standard_possessive = None, first = None, first_possessive = None, family = None, family_possessive = None):
+    def generate_random(cls, character_id, gender, standard = None, standard_possessive = None, first = None, first_possessive = None, family = None, family_possessive = None):
         if (gender == Gender.FEMALE):
             names_resource = female_names
         else:
@@ -210,10 +212,10 @@ class Character_Names(object):
         if (family == None):
             family = pick_random_and_consume(family_names)
 
-        names = Character_Names().build(gender, standard, standard_possessive, first, first_possessive, family, family_possessive, should_consume_names = True, should_fail_if_in_used_database = False, should_fail_if_not_in_database = False)
+        names = Character_Names(character_id).build(gender, standard, standard_possessive, first, first_possessive, family, family_possessive, should_consume_names = True, should_fail_if_in_used_database = False, should_fail_if_not_in_database = False)
         return names
 
-    def build_from_json(self, gender, json):
+    def build_from_json(self, character_id, gender, json):
         if gender == None or gender == "" or (gender != Gender.FEMALE and gender != Gender.MALE):
             renpy.error("ERROR: Character_Names.build_from_json(): Character does not have a 'standard' field.")
         standard = None
@@ -258,6 +260,6 @@ class Character_Names(object):
         if last_possessive == None:
             last_possessive = random_parts.last_possessive
 
-        self.build(gender, standard, standard_possessive, first, first_possessive, last, last_possessive, should_consume_names=False)
+        self.build(character_id, gender, standard, standard_possessive, first, first_possessive, last, last_possessive, should_consume_names=False)
         
         return self
