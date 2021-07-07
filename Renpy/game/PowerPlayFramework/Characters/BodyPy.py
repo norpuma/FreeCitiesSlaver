@@ -1,8 +1,40 @@
+import Character_TraitsPy as traits
+import renpy.exports as renpy
+
+ENUM__BODY_TYPES__VOLUPTUOUS = "VOLUPTUOUS"
+ENUM__BODY_TYPES__SLIM = "SLIM"
+
+def get_body_trait(character, trait_key):
+    character_body = character.body
+    if trait_key == traits.ENUM__TRAITS__IS_FIT:
+        return character_body.fitness
+    else:
+        renpy.error("ERROR: get_body_trait(): Can't find entry for trait_key '" + trait_key + "'.")
+    return 0
+
+def check_body_trait(character, trait_key):
+    character_body = character.body
+    if trait_key == traits.ENUM__TRAITS__IS_FIT:
+        return character_body.fitness > 0
+    else:
+        renpy.error("ERROR: check_body_trait(): Can't find entry for trait_key '" + trait_key + "'.")
+    return False
+
+def register_body_traits():
+    traits.register_trait_getter(traits.ENUM__TRAITS__FITNESS, get_body_trait)
+    traits.register_trait_checker(traits.ENUM__TRAITS__IS_FIT, check_body_trait)
+
+register_body_traits()
+
 class Character_Body(object):
     def __init__(self, character_id, gender):
         self.character_id = character_id
+        self._reset(gender)
+    
+    def _reset(self, gender):
         self._initialize_body_parts(gender)
-        self.reset(gender)
+        self.body_type = None
+        self.fitness = 0
 
     def _initialize_body_parts(self, gender):
         self.body_parts = {}

@@ -53,7 +53,8 @@ init 0 python:
             elif self.expanded_default_action_id == "LOCAL_ACTIONS":
                 return result
             elif self.expanded_default_action_id == "GO_SOMEWHERE_ELSE":
-                return result
+                for destination in current_location.destinations:
+                    result.append((destination.exit_text, "TownExplorer_Location_Actions_Selector", destination.target_location))
             else:
                 return result
             return result

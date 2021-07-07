@@ -1,0 +1,46 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/_TownExplorer_Tester.rpy", line 5, in script call
+    call TownExplorer_Location_Actions_Selector
+  File "game/_TownExplorer_Tester.rpy", line 51, in script call
+    call TownExplorer_Character_Interaction_Selector(selection)
+  File "game/_TownExplorer_Tester.rpy", line 56, in script
+    $ start_interaction(protagonist, target)
+  File "game/_TownExplorer_Tester.rpy", line 56, in <module>
+    $ start_interaction(protagonist, target)
+  File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 50, in start_interaction
+    current_interaction.start()
+  File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 43, in start
+    self._upsert_participants_relationships()
+  File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 19, in _upsert_participants_relationships
+    if self.initiator.id not in self.target.relationships.keys():
+AttributeError: 'NoneType' object has no attribute 'relationships'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/_TownExplorer_Tester.rpy", line 5, in script call
+    call TownExplorer_Location_Actions_Selector
+  File "game/_TownExplorer_Tester.rpy", line 51, in script call
+    call TownExplorer_Character_Interaction_Selector(selection)
+  File "game/_TownExplorer_Tester.rpy", line 56, in script
+    $ start_interaction(protagonist, target)
+  File "renpy/ast.py", line 922, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2218, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/_TownExplorer_Tester.rpy", line 56, in <module>
+    $ start_interaction(protagonist, target)
+  File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 50, in start_interaction
+    current_interaction.start()
+  File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 43, in start
+    self._upsert_participants_relationships()
+  File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 19, in _upsert_participants_relationships
+    if self.initiator.id not in self.target.relationships.keys():
+AttributeError: 'NoneType' object has no attribute 'relationships'
+
+Windows-10-10.0.19041
+Ren'Py 7.4.4.1439
+FreeCitiesSlaver 0.1
+Wed Jul  7 00:14:21 2021

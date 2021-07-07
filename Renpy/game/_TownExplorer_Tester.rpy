@@ -48,12 +48,13 @@ label TownExplorer_Character_Selector:
                 entries.append(("{0} {1}".format(char.names.standard, char.names.last), char))
     call screen sidebar_choice(entries, prompt = "With whom do you want to interact?")
     $ selection = _return
-    $ target = selection
-    $ start_interaction(protagonist, target)
-    jump TownExplorer_Character_Interaction_Selector
+    call TownExplorer_Character_Interaction_Selector(selection)
     return
 
 label TownExplorer_Character_Interaction_Selector(selected_character = None):
+    #"Starting 'TownExplorer_Character_Interaction_Selector' with selected character '[selected_character]'."
+    $ target = selected_character
+    $ start_interaction(protagonist, target)
     if selected_character is not None:
         $ target = selected_character
     $ actor = protagonist
@@ -64,4 +65,4 @@ label TownExplorer_Character_Interaction_Selector(selected_character = None):
         $ end_interaction()
         jump TownExplorer_Location_Actions_Selector
     $ renpy.call(selection)
-    jump TownExplorer_Character_Interaction_Selector
+    call TownExplorer_Character_Interaction_Selector(selected_character)

@@ -2,6 +2,7 @@ import Character_FundamentalsPy as fundamentals
 from .Character_NamesPy import Character_Names
 from .Status.Character_StatusPy import Character_Status
 from .PersonalityPy import Character_Personality
+import Character_TraitsPy as traits
 import renpy.exports as renpy
 
 def register_character(character):
@@ -10,6 +11,38 @@ def register_character(character):
 def load_characters_from_json_object(json_object):
     for key, value in json_object.items():
         new_character = Developed_Character(key).build_from_json(key, value)
+
+def get_fundamental_trait(character, trait_key):
+    if trait_key == traits.ENUM__TRAITS__GENDER:
+        return character.gender
+    elif trait_key == traits.ENUM__TRAITS__AGE:
+        return character.age
+    # TODO: Implement Age_Groups
+    # elif trait_key == traits.ENUM__TRAITS__AGE_GROUP:
+    #     return character.age
+    else:
+        renpy.error("ERROR: get_fundamental_trait(): Can't find entry for trait_key '" + trait_key + "'.")
+    return 0
+
+def check_fundamental_trait(character, trait_key):
+    character_body = character.body
+    if trait_key == traits.ENUM__TRAITS__IS_FEMALE:
+        return character_body.gender == fundamentals.Gender.FEMALE
+    elif trait_key == traits.ENUM__TRAITS__IS_MALE:
+        return character_body.gender == fundamentals.Gender.MALE
+    else:
+        renpy.error("ERROR: check_fundamental_trait(): Can't find entry for trait_key '" + trait_key + "'.")
+    return False
+
+def register_fundamental_traits():
+    traits.register_trait_getter(traits.ENUM__TRAITS__GENDER, get_fundamental_trait)
+    traits.register_trait_getter(traits.ENUM__TRAITS__AGE, get_fundamental_trait)
+    # TODO: Implement Age_Groups
+    #traits.register_trait_getter(traits.ENUM__TRAITS__AGE_GROUP, get_fundamental_trait)
+    traits.register_trait_checker(traits.ENUM__TRAITS__IS_FEMALE, check_fundamental_trait)
+    traits.register_trait_checker(traits.ENUM__TRAITS__IS_MALE, check_fundamental_trait)
+
+register_fundamental_traits()
 
 
 class Minimal_Character(fundamentals.Buildable_From_Json):
