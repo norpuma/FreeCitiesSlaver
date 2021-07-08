@@ -4,6 +4,7 @@ init python:
     from PowerPlayFramework.Characters.Status.MoodPy import Character_Mood_Modifier
     import PowerPlayFramework.Characters.Relationships._RelationshipsPy as relationships
     import PowerPlayFramework.Characters.PersonalityPy as personality
+    import PowerPlayFramework.Characters.Character_TraitsPy as traits
 
     current_interaction = None
 
@@ -76,7 +77,7 @@ label Characters__Interactions__Inspect__Default:
     # TODO: Obtain a description from target.body
     # TODO: Obtain a description from the target's clothes.
     $ gender_text = "woman"
-    if target.gender == fundamentals.Gender.FEMALE:
+    if traits.check_trait(target.id, traits.ENUM__TRAITS__IS_FEMALE):
         $ gender_text = "woman"
     else:
         $ gender_text = "man"

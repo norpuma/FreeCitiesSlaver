@@ -52,7 +52,6 @@ label TownExplorer_Character_Selector:
     return
 
 label TownExplorer_Character_Interaction_Selector(selected_character = None):
-    #"Starting 'TownExplorer_Character_Interaction_Selector' with selected character '[selected_character]'."
     $ target = selected_character
     $ start_interaction(protagonist, target)
     if selected_character is not None:

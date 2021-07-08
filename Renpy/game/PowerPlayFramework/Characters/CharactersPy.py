@@ -2,6 +2,7 @@ import Character_FundamentalsPy as fundamentals
 from .Character_NamesPy import Character_Names
 from .Status.Character_StatusPy import Character_Status
 from .PersonalityPy import Character_Personality
+from .BodyPy import Character_Body
 import Character_TraitsPy as traits
 import renpy.exports as renpy
 
@@ -17,9 +18,8 @@ def get_fundamental_trait(character, trait_key):
         return character.gender
     elif trait_key == traits.ENUM__TRAITS__AGE:
         return character.age
-    # TODO: Implement Age_Groups
-    # elif trait_key == traits.ENUM__TRAITS__AGE_GROUP:
-    #     return character.age
+    elif trait_key == traits.ENUM__TRAITS__AGE_GROUP:
+        return fundamentals.get_age_group_from_age(character.age)
     else:
         renpy.error("ERROR: get_fundamental_trait(): Can't find entry for trait_key '" + trait_key + "'.")
     return 0
@@ -27,9 +27,9 @@ def get_fundamental_trait(character, trait_key):
 def check_fundamental_trait(character, trait_key):
     character_body = character.body
     if trait_key == traits.ENUM__TRAITS__IS_FEMALE:
-        return character_body.gender == fundamentals.Gender.FEMALE
+        return character.gender == fundamentals.Gender.FEMALE
     elif trait_key == traits.ENUM__TRAITS__IS_MALE:
-        return character_body.gender == fundamentals.Gender.MALE
+        return character.gender == fundamentals.Gender.MALE
     else:
         renpy.error("ERROR: check_fundamental_trait(): Can't find entry for trait_key '" + trait_key + "'.")
     return False
@@ -37,8 +37,7 @@ def check_fundamental_trait(character, trait_key):
 def register_fundamental_traits():
     traits.register_trait_getter(traits.ENUM__TRAITS__GENDER, get_fundamental_trait)
     traits.register_trait_getter(traits.ENUM__TRAITS__AGE, get_fundamental_trait)
-    # TODO: Implement Age_Groups
-    #traits.register_trait_getter(traits.ENUM__TRAITS__AGE_GROUP, get_fundamental_trait)
+    traits.register_trait_getter(traits.ENUM__TRAITS__AGE_GROUP, get_fundamental_trait)
     traits.register_trait_checker(traits.ENUM__TRAITS__IS_FEMALE, check_fundamental_trait)
     traits.register_trait_checker(traits.ENUM__TRAITS__IS_MALE, check_fundamental_trait)
 
@@ -177,6 +176,7 @@ class Developed_Character(Minimal_Character):
         super(Developed_Character, self)._reset(id)
         self.id = id
         self.personality = Character_Personality(self.id)
+        self.body = Character_Body(self.id, self.gender)
 
         self.status = Character_Status()
         self.relationships = {}
@@ -191,6 +191,8 @@ class Developed_Character(Minimal_Character):
 
     def build_from_json(self, id, json):
         super(Developed_Character, self).build_from_json(id, json)
+        self.personality = Character_Personality(self.id)
+        self.body = Character_Body(self.id, self.gender)
         return self
 
 # class Person(Minimal_Character): #Everything that needs to be known about a person.

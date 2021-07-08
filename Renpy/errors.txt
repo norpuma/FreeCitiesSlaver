@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/PowerPlayFramework/Characters/Interactions/_Character_Interactions.rpy", line 88: if statement expects a non-empty block.
+    if traits.check_trait(target.id, traits.ENUM__TRAITS__IS_FIT):
+                                                                  ^
+
+Ren'Py Version: Ren'Py 7.4.4.1439
+Thu Jul  8 00:52:39 2021

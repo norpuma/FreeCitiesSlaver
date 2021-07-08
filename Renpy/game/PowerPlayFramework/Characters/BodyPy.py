@@ -42,7 +42,7 @@ class Character_Body(object):
         self._add_body_part(body_part.id, body_part)
         body_part = Character_Body_Part("LEFT_HAND", "left hand")
         self._add_body_part(body_part.id, body_part)
-        body_part = Character_Body_Part("FACE")
+        body_part = Character_Body_Part("FACE", "face")
         self._add_body_part(body_part.id, body_part)
         if gender == "FEMALE":
             body_part = Character_Body_Part("BREASTS", "breasts")
